@@ -1,3056 +1,5746 @@
-import React from 'react';
-import { MenuStatus} from "./MenuViewStatus"; 
-import { Grid,Card, CardMedia, CardContent, Typography } from '@material-ui/core';
+import React, { useState } from "react";
+import zustand from "zustand";
+import { MenuStatus } from "./MenuViewStatus";
+import { OptionOfMenu } from "./OptionStatus";
+import {
+  Grid,
+  Card,
+  CardMedia,
+  CardContent,
+  Typography,
+  Button,
+} from "@material-ui/core";
+import { show, hide } from "react-functional-modal";
+import Modalboxdesign from "./Modalboxdesign";
+import { MenuPriceStatus } from "./PriceStatus";
+import { AppViewStatus } from "./ViewStatus";
+import { CustomOptions } from "./Orderdata";
+import { devtools } from "zustand/middleware";
 
 function MenuSelecterMain() {
+  const { receipt, sumparser, setsumparser } = CustomOptions();
+  const {
+    ///////////////////////cake////////////////////////
+    istiramisu,
+    Settiramisutrue,
+    Settiramisufalse,
 
-    function temp(){
-      return alert("drink");
-    }
-    const {valueofmenu,SetSuggest,SetPopular,SetNewMenu,SetComboMenu,SetCoffee,SetDecaf,SetMilk,SetJuiceDrink,SetSmoothie,SetTeaAde,SetBread,SetDessert,SetMD}=MenuStatus();
-    let vh = window.innerHeight * 0.01;
-    let vw = window.innerWidth * 0.01;
+    istiramisustrawberry,
+    Settiramisustrawberrytrue,
+    Settiramisustrawberryfalse,
 
+    ishazelnutchocolatecake,
+    Sethazelnutchocolatecaketrue,
+    Sethazelnutchocolatecakefalse,
 
+    iscarrotcake,
+    Setcarrotcaketrue,
+    Setcarrotcakefalse,
 
-    return (
-        <div style={{overflow:"scroll", width:window.innerWidth, height:"700px"}}>
+    isburntcheesecake,
+    Setburntcheesecaketrue,
+    Setburntcheesecakefalse,
 
-      {valueofmenu===1?<div  style={{display:valueofmenu===1?"block":'none'}}>
-        <Grid container direction={"row"}  spacing={3} alignContent={"space-evenly"} Content={'left'} >
-          <Grid item xs={4}>
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/suggest/strawberryyogurtdrink.png"
-              onClick={temp}
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >딸기요거트드링크</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
-           
-          </Grid>
-          <Grid item xs={4}>
-          <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/suggest/raspberrymacaron.png"
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center' >산딸기마카롱</Typography>
-              <Typography align='center' >가격</Typography>
-              </CardContent>
-              </Card>
-          </Grid>
-          <Grid item xs={4}>
-          <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/suggest/peachyogurtdrink.png"
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >복숭아요거트드링크</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
-          </Grid>
-        </Grid>
-        <Grid container direction={"row"}   spacing={3} alignItems={'flex-start'} Content={'left'} >
-          <Grid item xs={4}>
-             <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/suggest/newpeachicedtea.png"
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >NEW복숭아아이스티</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
-          </Grid>
-          <Grid item xs={4}>
-           <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/suggest/jejugreentangerinetea.png"
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >제주청귤티</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>           
-          </Grid>
-          <Grid item xs={4}>
-           <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/suggest/honeylemontea.png"
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >허니레몬티</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
-          </Grid>
-        </Grid>        
-        <Grid container direction={"row"}   spacing={3} alignItems={'flex-start'} Content={'left'} >
-          <Grid item xs={4}>
-          
-           <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image= "menuimages/suggest/almondbonbonmacaron.png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >아몬드봉봉마카롱</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={4}>
-            
- 
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/suggest/banaricano.png"
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >바나리카노</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
-           
-          </Grid>
-          <Grid item xs={4}>
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/suggest/honeygrapefruittea.png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >허니자몽티</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-        </Grid>
+    isoreomilkcake,
+    Setoreomilkcaketrue,
+    Setoreomilkcakefalse,
 
-        </div>:<p></p>}
+    //////////////////////combo/////////////////////////
+    iscoffeeanddonutset,
+    Setcoffeeanddonutsettrue,
+    Setcoffeeanddonutsetfalse,
+    iscoffeeandonionbagelset,
+    Setcoffeeandonionbagelsettrue,
+    Setcoffeeandonionbagelsetfalse,
 
-        {valueofmenu===2?<div style={{display:valueofmenu===2?"block":'none'}}>
+    iscoffeeandplainbagelset,
+    Setcoffeeandplainbagelsettrue,
+    Setcoffeeandplainbagelsetfalse,
 
-        <Grid container direction={"row"}   spacing={3} alignItems={'flex-start'} Content={'left'} >
-          <Grid item xs={3}>
-          <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/cake/tiramisu.png"
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >티라미수</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
-          </Grid>
-          <Grid item xs={3}>
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image=  "menuimages/cake/burntcheesecake.png"
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >번트치즈케이크</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
-          </Grid>
-          <Grid item xs={3}>
-          
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image=   "menuimages/cake/carrotcake.png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >당근케이크</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-            
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image= "menuimages/cake/hazelnutchocolatecake.png" 
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  sx={{margin:"0%",padding:"0%"}}>헤이즐넛초콜릿케이크</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-        </Grid>
+    isquattrocheesegrilledpaniniset,
+    Setquattrocheesegrilledpaninisettrue,
+    Setquattrocheesegrilledpaninisetfalse,
 
+    ishamcheessmuffinset,
+    Sethamcheessmuffinsettrue,
+    Sethamcheessmuffinsetfalse,
 
-        <Grid container direction={"row"}   spacing={3} alignItems={'flex-start'} Content={'left'} >
-          <Grid item xs={3}>
- 
- <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/cake/oreomilkcake.png" 
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >오레오우유케이크</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image= "menuimages/cake/strawberrytiramisu.png"
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >딸기티라미수</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-        </Grid>
+    ispeperonigrilledcheesepaniniset,
+    Setpeperonigrilledcheesepaninisettrue,
+    Setpeperonigrilledcheesepaninisetfalse,
 
+    ishotchickengrilledpaniniset,
+    Sethotchickengrilledpaninisettrue,
+    Sethotchickengrilledpaninisetfalse,
 
+    ismacaronsetplus, //excluded bag and + price.
+    Setmacaronsetplustrue,
+    Setmacaronsetplusfalse,
 
+    //////////////////////coffee/////////////////////////
+    isamericano,
+    Setamericanotrue,
+    Setamericanofalse,
 
+    isbanaricano,
+    Setbanaricanotrue,
+    Setbanaricanofalse,
 
-        </div>:<p></p>}
+    iscafelatte,
+    Setcafelattetrue,
+    Setcafelattefalse,
 
-        {valueofmenu===3?<div style={{display:valueofmenu===3?"block":'none'}}>
+    iscinnamonlatte,
+    Setcinnamonlattetrue,
+    Setcinnamonlattefalse,
 
-        </div>:<p></p>}
+    iscoldbrew,
+    Setcoldbrewtrue,
+    Setcoldbrewfalse,
 
-        {valueofmenu===4?<div style={{display:valueofmenu===4?"block":'none'}}>
+    iscondensedlatte,
+    Setcondensedlattetrue,
+    Setcondensedlattefalse,
 
-        <Grid container direction={"row"}   spacing={3} alignItems={'flex-start'} Content={'left'} >
-          <Grid item xs={3}>
- 
- <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/setmenu/coffeedonutset.png" 
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >커피&도넛세트</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image=  "menuimages/setmenu/coffeeonionbagelset.png"
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >커피&어니언베이글세트</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-           
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image=  "menuimages/setmenu/coffeeplainbagelset.png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >커피&플레인베이글세트</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image= "menuimages/setmenu/cuatrocheesegrilledpaniniset.png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >콰트로치즈그릴드파니니 세트</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-        </Grid>
-        <Grid container direction={"row"}   spacing={3} alignItems={'flex-start'} Content={'left'} >
-          <Grid item xs={3}>
+    iscreamylatte,
+    Setcreamylattetrue,
+    Setcreamylattefalse,
 
- <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image= "menuimages/setmenu/hamcheesemuffinset.png" 
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >햄치즈머핀세트</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-            
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image=    "menuimages/setmenu/pepperonigrilledcheesepaniniset.png"
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >페퍼로니그릴드치즈파니니 세트</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
-          
-          </Grid>
-          <Grid item xs={3}>
-             
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/setmenu/hotchickengrilledcheesepaniniset.png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >핫치킨그리드치즈파니니 세트</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-            
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image= "menuimages/setmenu/macaronset(8+1).png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >마카롱세트8+1</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-        </Grid>
-        </div>:<p></p>}
+    isdolcecoldbrew,
+    Setdolcecoldbrewtrue,
+    Setdolcecoldbrewfalse,
 
-        {valueofmenu===5?<div  style={{display:valueofmenu===5?"block":'none'}}>
-        <Grid container direction={"row"}   spacing={3} alignItems={'flex-start'} Content={'left'} >
-          <Grid item xs={3}>
+    isespresso,
+    Setespressotrue,
+    Setespressofalse,
 
- <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image= "menuimages/coffee/americano.png" 
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >아메리카노</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-              
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/coffee/banaricano.png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >바나리카노</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-            
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image= "menuimages/coffee/cafelatte.png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >카페라떼</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-            
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image= "menuimages/coffee/cinnamonlatte.png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >시나몬라떼</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-        </Grid>
-        <Grid container direction={"row"}   spacing={3} alignItems={'flex-start'} Content={'left'} >
-          <Grid item xs={3}>
- <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image= "menuimages/coffee/coldbrew.png" 
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >콜드브루</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/coffee/condensedmilkcafelatte.png"   
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >연유라떼</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-               
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/coffee/creamylatte.png"
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >크리미라떼</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-             
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/coffee/dolcecoldbrew.png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >돌체 콜드브루</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-        </Grid>
-        <Grid container direction={"row"}   spacing={3} alignItems={'flex-start'} Content={'left'} >
+    ishoneyamericano,
+    Sethoneyamericanotrue,
+    Sethoneyamericanofalse,
 
-          <Grid item xs={3}>
-             
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/coffee/espresso.png"   
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >에스프레소</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-             
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/coffee/honeyamericano.png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >허니아메리카노</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-             
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/coffee/milkcaramelmacchiato.png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >밀크카라멜마키아또</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
+    ismilkcaramelmacciato,
+    Setmilkcaramelmacciatotrue,
+    Setmilkcaramelmacciatofalse,
 
- <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image= "menuimages/coffee/pistachiocafelatte.png" 
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >피스타치오카페라떼</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-        </Grid>
-        <Grid container direction={"row"}   spacing={3} alignItems={'flex-start'} Content={'left'} >
-          <Grid item xs={3}>
+    ispistachiocafelatte,
+    Setpistachiocafelattetrue,
+    Setpistachiocafelattefalse,
 
- <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image= "menuimages/coffee/signatureamericano.png" 
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >시그니처아메리카노</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-             
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/coffee/signaturecoldbrew.png"   
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >시그니처콜드브루</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-             
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/coffee/vanillacoldbrew.png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >바닐라 콜드브루</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-             
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/coffee/vanillalatte.png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >바닐라라떼</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-        </Grid>
-        </div>:<p></p>}
+    issignatureamericano,
+    Setsignatureamericanotrue,
+    Setsignatureamericanofalse,
 
-        {valueofmenu===6?<div style={{display:valueofmenu===6?"block":'none'}}>
+    issignaturecoldbrew,
+    Setsignaturecoldbrewtrue,
+    Setsignaturecoldbrewfalse,
 
-        <Grid container direction={"row"}   spacing={3} alignItems={'flex-start'} Content={'left'} >
-          <Grid item xs={3}>
- 
- <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/decaf/decafamericano.png" 
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >디카페인 아메리카노</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-             
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/decaf/decafbanaricano.png"   
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >디카페인 바나리카노</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-             
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/decaf/decafcafelatte.png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >디카페인 카페라떼</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-             
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/decaf/decafcinnamonlatte.png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >디카페인 시나몬라떼</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-        </Grid>
-        <Grid container direction={"row"}   spacing={3} alignItems={'flex-start'} Content={'left'} >
-          <Grid item xs={3}>
- 
- <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/decaf/decafcondensedmilkcafelatte.png" 
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >디카페인 연유라떼</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-              
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/decaf/decafcreamylatte.png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >디카페인 크리미라떼</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-             
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image= "menuimages/decaf/decafespresso.png" 
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >디카페인 에스프레소</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-             
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/decaf/decafhoneyamericano.png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >디카페인 허니아메리카노</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-        </Grid>
-        <Grid container direction={"row"}   spacing={3} alignItems={'flex-start'} Content={'left'} >
-          <Grid item xs={3}>
+    isvanillacoldbrew,
+    Setvanillacoldbrewtrue,
+    Setvanillacoldbrewfalse,
 
- <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image= "menuimages/decaf/decafmilkcaramelmacchiato.png" 
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >디카페인 밀크카라멜마키아또</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-              
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/decaf/decafpistachiocafelatte.png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >디카페인 피스타치오</Typography>
-              <Typography align='center'  >가격</Typography>
-    
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-              
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/decaf/decafvanillalatte.png" 
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >디카페인 바닐라라떼</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-        </Grid>
-        </div>:<p></p>}
+    isvanillalatte,
+    Setvanillalattetrue,
+    Setvanillalattefalse,
 
-        {valueofmenu===7?<div style={{display:valueofmenu===7?"block":'none'}}>
-      
-        <Grid container direction={"row"}   spacing={3} alignItems={'flex-start'} Content={'left'} >
-          <Grid item xs={3}>
+    //////////////////////decaf/////////////////////////
+    isdecafamericano,
+    Setdecafamericanotrue,
+    Setdecafamericanofalse,
 
- <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image= "menuimages/milktea_latte/blacksugarbubbletea.png" 
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >흑당버블티</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-              
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/milktea_latte/blacksugarmilktea.png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >흑당밀크티</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-             
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/milktea_latte/chaimilktea.png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >차이밀크티</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-             
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/milktea_latte/classicmilktea.png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >클래식밀크티</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-        </Grid>
-        <Grid container direction={"row"}   spacing={3} alignItems={'flex-start'} Content={'left'} >
-          <Grid item xs={3}>
- 
- <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/milktea_latte/dalgonalatte.png" 
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >달고나라떼</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-             
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/milktea_latte/earlgreybubbletea.png"   
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >얼그레이버블티</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-             
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/milktea_latte/earlgreymilktea.png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >얼그레이밀크티</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-             
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/milktea_latte/greentealatte.png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >녹차라떼</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-        </Grid>
-        <Grid container direction={"row"}   spacing={3} alignItems={'flex-start'} Content={'left'} >
-          <Grid item xs={3}>
- 
- <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/milktea_latte/oatmeallatte.png" 
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >오트밀라떼</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-             
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/milktea_latte/pistachiolatte.png"   
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >피스타치오라떼</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-             
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/milktea_latte/realchoco.png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >리얼초코</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-              
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/milktea_latte/realvanillabean.png" 
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >리얼바닐라빈</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-        </Grid>
-        <Grid container direction={"row"}   spacing={3} alignItems={'flex-start'} Content={'left'} >
-          <Grid item xs={3}>
- 
- <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/milktea_latte/ripepersimmonlatte.png" 
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >홍시라떼</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-              
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/milktea_latte/royalmilktea.png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >로열밀크티</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-             
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/milktea_latte/strawberrylatte.png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >딸기라떼</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-             
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/milktea_latte/toffeenutlatte.png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >토피넛라떼</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-        </Grid>
-        </div>:<p></p>}
+    isdecafbanaricano,
+    Setdecafbanaricanotrue,
+    Setdecafbanaricanofalse,
 
-        {valueofmenu===8?<div style={{display:valueofmenu===8?"block":'none'}}>
-        <Grid container direction={"row"}   spacing={3} alignItems={'flex-start'} Content={'left'} >
-          <Grid item xs={3}>
- 
- <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/juicedrink/goldmedalapplejuice.png" 
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >골드메달 애플쥬스</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-              
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/juicedrink/goldmedalapplesparkling.png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >골드메달 애플스파클링</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-             
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/juicedrink/mangojuice.png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >망고쥬스</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-             
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/juicedrink/peachyogurtdrink.png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >복숭아요거트드링크</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-        </Grid>
-        <Grid container direction={"row"}   spacing={3} alignItems={'flex-start'} Content={'left'} >
-          <Grid item xs={3}>
- 
- <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image= "menuimages/juicedrink/perrierlemon.png"
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >페리에레몬</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-             
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/juicedrink/perrierlime.png"   
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >페리에라임</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-             
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/juicedrink/plainyogurtdrink.png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >플레인요거트드링크</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-             
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/juicedrink/ripepersimmonjuice.png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >홍시쥬스</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-        </Grid>
-        <Grid container direction={"row"}   spacing={3} alignItems={'flex-start'} Content={'left'} >
-          <Grid item xs={3}>
- 
- <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/juicedrink/strawberrybananajuice.png" 
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >딸기바나나쥬스</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-            
-             <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image= "menuimages/juicedrink/strawberryjuice.png"   
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >딸기쥬스</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-             
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/juicedrink/strawberryyogurtdrink.png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >딸기요거트드링크</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-             
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/juicedrink/tomatofreshjuice.png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >토마토생과일쥬스</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-        </Grid>
-        </div>:<p></p>}
+    isdecafcafelatte,
+    Setdecafcafelattetrue,
+    Setdecafcafelattefalse,
 
-        {valueofmenu===9?<div style={{display:valueofmenu===9?"block":'none'}}>
-        
-        <Grid container direction={"row"}   spacing={3} alignItems={'flex-start'} Content={'left'} >
-          <Grid item xs={3}>
- 
- <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/banaccino_smoothie/chocoshake.png" 
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >초코쉐이크</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-              
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/banaccino_smoothie/cookie&creambanaccino.png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >쿠앤크바나치노</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-            
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image= "menuimages/banaccino_smoothie/greenteabanaccino.png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >녹차바나치노</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-              
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/banaccino_smoothie/javachipbanaccino.png" 
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >자바칩바나치노</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-        </Grid>
-        <Grid container direction={"row"}   spacing={3} alignItems={'flex-start'} Content={'left'} >
-          <Grid item xs={3}>
- 
- <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/banaccino_smoothie/lemonstrawberrysmoothie.png" 
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >레몬딸기스무디</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-            
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image= "menuimages/banaccino_smoothie/lemonyogurtsmoothie.png"   
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >레몬요거트스무디</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-              
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/banaccino_smoothie/mangosmoothie.png" 
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >망고스무디</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-            
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image= "menuimages/banaccino_smoothie/mintchocolatebanaccino.png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >민트초코바나치노</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-        </Grid>
-        <Grid container direction={"row"}   spacing={3} alignItems={'flex-start'} Content={'left'} >
-          <Grid item xs={3}>
+    isdecafcinnamonlatte,
+    Setdecafcinnamonlattetrue,
+    Setdecafcinnamonlattefalse,
 
- <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image= "menuimages/banaccino_smoothie/strawberrypeachsmoothie.png" 
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >딸기복숭아스무디</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-              
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/banaccino_smoothie/strawberrysmoothie.png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >딸기스무디</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-              
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/banaccino_smoothie/vanillashake.png" 
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >바닐라쉐이크</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-        </Grid>
-        </div>:<p></p>}
+    isdecafcondensed,
+    Setdecafcondensedtrue,
+    Setdecafcondensedfalse,
 
-        {valueofmenu===10?<div style={{display:valueofmenu===10?"block":'none'}}>
-      
-        <Grid container direction={"row"}   spacing={3} alignItems={'flex-start'} Content={'left'} >
-          <Grid item xs={3}>
+    isdecafcreamylatte,
+    Setdecafcreamylattetrue,
+    Setdecafcreamylattefalse,
 
- <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image= "menuimages/tea_ade/chamomilelycheetea.png" 
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >캐모마일리치티</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-  
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/tea_ade/chamomiletea.png" 
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >캐모마일</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-               
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/tea_ade/citronappletea.png"
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >유자애플티</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-            
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image= "menuimages/tea_ade/earlgreytea.png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >얼그레이</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-        </Grid>
-        <Grid container direction={"row"}   spacing={3} alignItems={'flex-start'} Content={'left'} >
-          <Grid item xs={3}>
- 
- <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image= "menuimages/tea_ade/gingerlemontea.png"
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >생강레몬티</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-            
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image= "menuimages/tea_ade/grapefruitade.png"   
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >자몽에이드</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-             
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/tea_ade/grapefruithibiscustea.png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >자몽히비스커스티</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-             
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/tea_ade/greengrapeade.png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >청포도에이드</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-        </Grid>
-        <Grid container direction={"row"}   spacing={3} alignItems={'flex-start'} Content={'left'} >
-          <Grid item xs={3}>
+    isdecafespresso,
+    Setdecafespressotrue,
+    Setdecafespressofalse,
 
- <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image= "menuimages/tea_ade/hibiscustea.png" 
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >히비스커스</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-             
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/tea_ade/honeygrapefruittea.png"   
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >허니자몽티</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-             
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/tea_ade/honeylemontea.png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >허니레몬티</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-            
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image= "menuimages/tea_ade/jejugreentangerinetea.png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >제주청귤티</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-        </Grid>
-        <Grid container direction={"row"}   spacing={3} alignItems={'flex-start'} Content={'left'} >
-          <Grid item xs={3}>
+    isdecafhoneyamericano,
+    Setdecafhoneyamericanotrue,
+    Setdecafhoneyamericanofalse,
 
- <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image= "menuimages/tea_ade/jujubeblackherbaltea.png" 
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >대추쌍화차</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-              
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image= "menuimages/tea_ade/lemonade.png" 
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >레몬에이드</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-            
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image= "menuimages/tea_ade/lemonpepperminttea.png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >레몬페퍼민트티</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-            
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image=  "menuimages/tea_ade/mintyujapeartea.png" 
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >민트유자페어티</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-        </Grid>
-        <Grid container direction={"row"}   spacing={3} alignItems={'flex-start'} Content={'left'} >
-          <Grid item xs={3}>
+    isdecafmilkcaramelmacciato,
+    Setdecafmilkcaramelmacciatotrue,
+    Setdecafmilkcaramelmacciatofalse,
 
- <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image= "menuimages/tea_ade/newpeachicedtea.png" 
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >NEW복숭아아이스티</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-               
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/tea_ade/peachade.png" 
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >복숭아에이드</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-             
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/tea_ade/pearbellflowerroottea.png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >배도라지차</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-             
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/tea_ade/peppermint tea.png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >페퍼민트</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-        </Grid>
-        </div>:<p></p>}
+    isdecafpistachio,
+    Setdecafpistachiotrue,
+    Setdecafpistachiofalse,
 
-        {valueofmenu===11?<div style={{display:valueofmenu===11?"block":'none'}}>
-        
-        <Grid container direction={"row"}   spacing={3} alignItems={'flex-start'} Content={'left'} >
-          <Grid item xs={3}>
+    isdecafvanillalatte,
+    Setdecafvanillalattetrue,
+    Setdecafvanillalattefalse,
 
- <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image= "menuimages/bread/clubsandwich.png" 
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >클럽샌드위치</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-               
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image= "menuimages/bread/custarddonut.png"
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >커스터드도넛</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-             
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image= "menuimages/bread/eggbaconsandwich.png" 
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >에그베이컨샌드위치</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-            
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image= "menuimages/bread/hamcheeseenglishmuffin.png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >햄치즈잉글리시머핀</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-        </Grid>
-        <Grid container direction={"row"}   spacing={3} alignItems={'flex-start'} Content={'left'} >
-          <Grid item xs={3}>
+    //////////////////////milk/////////////////////////
 
- <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image= "menuimages/bread/hotchickengrilledcheesepanini.png" 
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >핫치킨그릴드치즈파니니</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-             
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/bread/jalapenobulgogisandwich.png"   
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >할라피뇨불고기샌드위치</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-            
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image= "menuimages/bread/onionbagel.png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >어니언베이글</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-            
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image= "menuimages/bread/paulycreamcheese.png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >폴리크림치즈</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-        </Grid>
-        <Grid container direction={"row"}   spacing={3} alignItems={'flex-start'} Content={'left'} >
-          <Grid item xs={3}>
+    isblacksugarbubbletea,
+    Setblacksugarbubbleteatrue,
+    Setblacksugarbubbleteafalse,
 
- <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image= "menuimages/bread/peperonigrilledcheesepanini.png" 
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >페퍼로니그릴드치즈파니니</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-            
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image= "menuimages/bread/plainbagel.png"   
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >플레인베이글</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-           
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image=  "menuimages/bread/quatrocheesegrilledpanini.png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >콰트로치즈그릴드파니니</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-             
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image= "menuimages/bread/tunasandwich.png" 
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >튜나샌드위치</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-        </Grid>
-        </div>:<p></p>}
+    isblacksugarmilktea,
+    Setblacksugarmilkteatrue,
+    Setblacksugarmilkteafalse,
 
-        {valueofmenu===12?<div style={{display:valueofmenu===12?"block":'none'}}>
-        
-        <Grid container direction={"row"}   spacing={3} alignItems={'flex-start'} Content={'left'} >
-          <Grid item xs={3}>
+    ischaimilktea,
+    Setchaimilkteatrue,
+    Setchaimilkteafalse,
 
- <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image= "menuimages/dessert/almondbonbonmacaron.png" 
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >아몬드봉봉마카롱</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-             
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image= "menuimages/dessert/americancookie.png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >아메리칸쿠키</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-             
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/dessert/chocochipcookie.png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >초코칩쿠키</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-             
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/dessert/chocolatemacaron.png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >초콜릿마카롱</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-        </Grid>
-        <Grid container direction={"row"}   spacing={3} alignItems={'flex-start'} Content={'left'} >
-          <Grid item xs={3}>
- 
- <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image= "menuimages/dessert/cookeandcreammacaron.png"
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >쿠키앤크림마카롱</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-            
- 
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image= "menuimages/dessert/dessertshoppingbag.png"   
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >디저트쇼핑백</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
-           
-          </Grid>
-          <Grid item xs={3}>
-         
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image=    "menuimages/dessert/greenteawhitecookie.png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >말차화이트쿠키</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-         
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image=    "menuimages/dessert/injeolmimacaron.png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >인절미마카롱</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-        </Grid>
-        <Grid container direction={"row"}   spacing={3} alignItems={'flex-start'} Content={'left'} >
-          <Grid item xs={3}>
+    isclassicmilktea,
+    Setclassicmilkteatrue,
+    Setclassicmilkteafalse,
 
- <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image= "menuimages/dessert/marlenkacake(cocoa).png" 
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >말렌카케이크(코코아)</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-         
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image=    "menuimages/dessert/marlenkacake(walnut).png"   
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >말렌카케이크(호두)</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-        
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image=     "menuimages/dessert/milkmacaron.png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >우유마카롱</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-       
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image=       "menuimages/dessert/mintchocolatemacaron.png" 
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >민트초코마카롱</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-        </Grid>
-        <Grid container direction={"row"}   spacing={3} alignItems={'flex-start'} Content={'left'} >
-          <Grid item xs={3}>
+    isdalgonalatte,
+    Setdalgonalattetrue,
+    Setdalgonalattefalse,
 
- <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image= "menuimages/dessert/raspberrymacaron.png" 
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >산딸기마카롱</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-             
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/dessert/vanillamacaron.png"   
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >바닐라마카롱</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-             
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/dessert/yellowcheesemacaron.png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >황치즈마카롱</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
+    isearlgreybubbletea,
+    Setearlgreybubbleteatrue,
+    Setearlgreybubbleteafalse,
 
-        </Grid>
-        </div>:<p></p>}
+    isearlgreymilktea,
+    Setearlgreymilkteatrue,
+    Setearlgreymilkteafalse,
 
-        {valueofmenu===13?<div style={{display:valueofmenu===13?"block":'none'}}>
-        
-        <Grid container direction={"row"}   spacing={3} alignItems={'flex-start'} Content={'left'} >
-          <Grid item xs={3}>
+    isgreentealatte,
+    Setgreentealattetrue,
+    Setgreentealattefalse,
 
- <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image= "menuimages/md/9900point.png" 
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >바나프레소 상품권 9,900원권</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-              
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/md/10000point.png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >바나프레소 상품권 1만원권</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-            
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image= "menuimages/md/30000point.png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >바나프레소 상품권 3만원권</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-           
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image=  "menuimages/md/50000point.png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >바나프레소 상품권 5만원권</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-        </Grid>
-        <Grid container direction={"row"}   spacing={3} alignItems={'flex-start'} Content={'left'} >
-          <Grid item xs={3}>
+    isoatmeallatte,
+    Setoatmeallattetrue,
+    Setoatmeallattefalse,
 
- <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image= "menuimages/md/acrylickeyringatype.png" 
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >아크릴키링_A타입</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-               
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/md/acrylickeyringbtype.png" 
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >아크릴키링_B타입</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-            
- 
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image= "menuimages/md/acrylickeyringctype.png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >아크릴키링_C타입</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
-           
-          </Grid>
-          <Grid item xs={3}>
-           
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image=  "menuimages/md/acrylickeyringdtype.png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >아크릴키링_D타입</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-        </Grid>
-        <Grid container direction={"row"}   spacing={3} alignItems={'flex-start'} Content={'left'} >
-          <Grid item xs={3}>
+    ispistachiolatte,
+    Setpistachiolattetrue,
+    Setpistachiolattefalse,
 
- <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image= "menuimages/md/dripbagblend.png" 
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >드립백(블렌드)</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
+    isrealchoco,
+    Setrealchocotrue,
+    Setrealchocofalse,
 
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image=             "menuimages/md/ethifacekeyring.png"   
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >에티얼굴키링</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-             
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/md/ethimonitorplush.png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >에티모니터인형</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-              
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/md/maskingtapebabybokthi.png" 
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >마스킹테이프_베이비복티</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-        </Grid>
-        <Grid container direction={"row"}   spacing={3} alignItems={'flex-start'} Content={'left'} >
-          <Grid item xs={3}>
+    isrealvanillabean,
+    Setrealvanillabeantrue,
+    Setrealvanillabeanfalse,
 
- <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image= "menuimages/md/maskingtapebabyethi.png" 
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >마스킹테이프_베이비에티</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-               
- 
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/md/memopadbabybokthi.png" 
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >메모패드_베이비복티</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
-           
-          </Grid>
-          <Grid item xs={3}>
-             
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image= "menuimages/md/memopadbabyethi.png" 
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >메모패드_베이비에티</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-           
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image=  "menuimages/md/mousepadbabybokthi.png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >마우스패드_베이비복티</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-        </Grid>
-        <Grid container direction={"row"}   spacing={3} alignItems={'flex-start'} Content={'left'} >
-          <Grid item xs={3}>
+    isripepersimmonlatte,
+    Setripepersimmonlattetrue,
+    Setripepersimmonlattefalse,
 
- <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image= "menuimages/md/mousepadbabyethi.png" 
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >마우스패드_베이비에티</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-             
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/md/notebabyethibokthi.png"   
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >노트_베이비에티&복티</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-              
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/md/pouchbabyethibokthi.png" 
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >파우치_베이비에티&복티</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-             
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/md/removablestickerbabybokthi.png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >리무버블스티커_베이비복티</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-        </Grid>
-        <Grid container direction={"row"}   spacing={3} alignItems={'flex-start'} Content={'left'} >
-          <Grid item xs={3}>
+    isroyalmilktea,
+    Setroyalmilkteatrue,
+    Setroyalmilkteafalse,
 
- <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image= "menuimages/md/removablestickerbabyethi.png" 
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >리무버블스티커_베이비에티</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-              
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/md/removablestickerbabyethibokthi.png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >리무버블스티커_베이비에티&복티</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-             
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/md/reusabletumblerpink.png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >리유저블텀블러(핑크)</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-             
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/md/reusabletumblerwhite.png"  
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >리유저블텀블러(화이트)</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-        </Grid>
-        <Grid container direction={"row"}   spacing={3} alignItems={'flex-start'} Content={'left'} >
-          <Grid item xs={3}>
+    isstrawberrylatte,
+    Setstrawberrylattetrue,
+    Setstrawberrylattefalse,
 
- <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image= "menuimages/md/smarttok_babyethi.png" 
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >스마트톡_베이비에티</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-          <Grid item xs={3}>
-             
-            <Card raised sx={{margin: "0 auto",padding:"0px"}} style={{width:"200px",height:"250px", borderRadius:"16px",marginTop:"20px"}}>
-              <CardMedia
-              alignItems="center"
-              component="img"
-              
-              image="menuimages/md/smarttokbabybokthi.png"   
-              onClick={temp} 
-              sx={{ padding: "0px", objectFit:"contain"}}/>
-              <CardContent sx={{padding:"0px"}}>
-              <Typography align='center'  >스마트톡_베이비복티</Typography>
-              <Typography align='center'  >가격</Typography>
-              </CardContent>
-              </Card>
- 
-           
-          </Grid>
-        </Grid>
-        </div>:<p></p>}
+    istoffeenutlatte,
+    Settoffeenutlattetrue,
+    Settoffeenutlattefalse,
 
-        </div>
+    //////////////////////juicedrink/////////////////////////
+
+    isgoldmedalapplejuice, //from web
+    Setgoldmedalapplejuicetrue,
+    Setgoldmedalapplejuicefalse,
+
+    isgoldmedalsparkling, // from web
+    Setgoldmedalsparklingtrue,
+    Setgoldmedalsparklingfalse,
+
+    ismangojuice,
+    Setmangojuicetrue,
+    Setmangojuicefalse,
+
+    ispeachyogurtdrink,
+    Setpeachyogurtdrinktrue,
+    Setpeachyogurtdrinkfalse,
+
+    isperrierlemon,
+    Setperrierlemontrue,
+    Setperrierlemonfalse,
+
+    isperrierlime,
+    Setperrierlimetrue,
+    Setperrierlimefalse,
+
+    isplainyogurtdrink,
+    Setplainyogurtdrinktrue,
+    Setplainyogurtdrinkfalse,
+
+    isripepersimmonjuice,
+    Setripepersimmonjuicetrue,
+    Setripepersimmonjuicefalse,
+
+    isstrawberrybananajuice,
+    Setstrawberrybananajuicetrue,
+    Setstrawberrybananajuicefalse,
+
+    isstrawberryjuice,
+    Setstrawberryjuicetrue,
+    Setstrawberryjuicefalse,
+
+    isstrawberryyogurtdrink,
+    Setstrawberryyogurtdrinktrue,
+    Setstrawberryyogurtdrinkfalse,
+
+    istomatofreshjuice,
+    Settomatofreshjuicetrue,
+    Settomatofreshjuicefalse,
+
+    //////////////////////smothiebanaccino/////////////////////////
+
+    ischocoshake,
+    Setchocoshaketrue,
+    Setchocoshakefalse,
+
+    iscookieandcreambanaccino,
+    Setcookieandcreambanaccinotrue,
+    Setcookieandcreambanaccinofalse,
+
+    isgreenteabanaccino,
+    Setgreenteabanaccinotrue,
+    Setgreenteabanaccinofalse,
+
+    isjavachipbanaccino,
+    Setjavachipbanaccinotrue,
+    Setjavachipbanaccinofalse,
+
+    islemonstrawberrysmoothie,
+    Setlemonstrawberrysmoothietrue,
+    Setlemonstrawberrysmoothiefalse,
+
+    islemonyogurtsmoothie,
+    Setlemonyogurtsmoothietrue,
+    Setlemonyogurtsmoothiefalse,
+
+    ismangosmoothie,
+    Setmangosmoothietrue,
+    Setmangosmoothiefalse,
+
+    ismintchocobanaccino,
+    Setmintchocobanaccinotrue,
+    Setmintchocobanaccinofalse,
+
+    isstrawberrypeachsmoothie,
+    Setstrawberrypeachsmoothietrue,
+    Setstrawberrypeachsmoothiefalse,
+
+    isstrawberrysmoothie,
+    Setstrawberrysmoothietrue,
+    Setstrawberrysmoothiefalse,
+
+    isvanillashake,
+    Setvanillashaketrue,
+    Setvanillashakefalse,
+
+    //////////////////////teaade/////////////////////////
+
+    ischamomilelycheetea,
+    Setchamomilelycheeteatrue,
+    Setchamomilelycheeteafalse,
+
+    ischamomile,
+    Setchamomiletrue,
+    Setchamomilefalse,
+
+    isyujaappletea,
+    Setyujaappleteatrue,
+    Setyujaappleteafalse,
+
+    isearlgrey,
+    Setearlgreytrue,
+    Setearlgreyfalse,
+
+    isgingerlemontea,
+    Setgingerlemonteatrue,
+    Setgingerlemonteafalse,
+
+    isgrapefruitade,
+    Setgrapefruitadetrue,
+    Setgrapefruitadefalse,
+
+    isgrapefruithibiscustea,
+    Setgrapefruithibiscusteatrue,
+    Setgrapefruithibiscusteafalse,
+
+    isgreengrapeade,
+    Setgreengrapeadetrue,
+    Setgreengrapeadefalse,
+
+    ishibiscus,
+    Sethibiscustrue,
+    Sethibiscusfalse,
+
+    ishoneygrapefruittea,
+    Sethoneygrapefruitteatrue,
+    Sethoneygrapefruitteafalse,
+
+    ishoneylemontea,
+    Sethoneylemonteatrue,
+    Sethoneylemonteafalse,
+
+    isjejugreentangerinetea,
+    Setjejugreentangerineteatrue,
+    Setjejugreentangerineteafalse,
+
+    isjujubeblackherbaltea,
+    Setjujubeblackherbalteatrue,
+    Setjujubeblackherbalteafalse,
+
+    islemonade,
+    Setlemonadetrue,
+    Setlemonadefalse,
+
+    islemonpepperminttea,
+    Setlemonpeppermintteatrue,
+    Setlemonpeppermintteafalse,
+
+    ismintyujapeartea,
+    Setmintyujapearteatrue,
+    Setmintyujapearteafalse,
+
+    isnewpeachicedtea,
+    Setnewpeachicedteatrue,
+    Setnewpeachicedteafalse,
+
+    ispeachade,
+    Setpeachadetrue,
+    Setpeachadefalse,
+
+    ispearbellflowerroottea,
+    Setpearbellflowerrootteatrue,
+    Setpearbellflowerrootteafalse,
+
+    ispeppermint,
+    Setpepperminttrue,
+    Setpeppermintfalse,
+
+    //////////////////////bread/////////////////////////
+
+    isclubsandwich,
+    Setclubsandwichtrue,
+    Setclubsandwichfalse,
+
+    iscustarddonut,
+    Setcustarddonuttrue,
+    Setcustarddonutfalse,
+
+    iseggbaconsandwich,
+    Seteggbaconsandwichtrue,
+    Seteggbaconsandwichfalse,
+
+    ishamcheeseenglishmuffin,
+    Sethamcheeseenglishmuffintrue,
+    Sethamcheeseenglishmuffinfalse,
+
+    ishotchickengrilledpanini,
+    Sethotchickengrilledpaninitrue,
+    Sethotchickengrilledpaninifalse,
+
+    isjalapenobulgogisandwich,
+    Setjalapenobulgogisandwichtrue,
+    Setjalapenobulgogisandwichfalse,
+
+    isonionbagel,
+    Setonionbageltrue,
+    Setonionbagelfalse,
+
+    ispaulycreamcheese,
+    Setpaulycreamcheesetrue,
+    Setpaulycreamcheesefalse,
+
+    ispeperonigrilledcheesepanini,
+    Setpeperonigrilledcheesepaninitrue,
+    Setpeperonigrilledcheesepaninifalse,
+
+    isplainbagel,
+    Setplainbageltrue,
+    Setplainbagelfalse,
+
+    isquattrocheesegrilledpanini,
+    Setquattrocheesegrilledpaninitrue,
+    Setquattrocheesegrilledpaninifalse,
+
+    istunasandwich,
+    Settunasandwichtrue,
+    Settunasandwichfalse,
+
+    //////////////////////dessert/////////////////////////
+
+    isalmondbonbonmacaron,
+    Setalmondbonbonmacarontrue,
+    Setalmondbonbonmacaronfalse,
+
+    isamericancookie,
+    Setamericancookietrue,
+    Setamericancookiefalse,
+
+    ischocochipcookie,
+    Setchocochipcookietrue,
+    Setchocochipcookiefalse,
+
+    ischocolatemacaron,
+    Setchocolatemacarontrue,
+    Setchocolatemacaronfalse,
+
+    iscookieandcreammacaron,
+    Setcookieandcreammacarontrue,
+    Setcookieandcreammacaronfalse,
+
+    isdessertshoppingbag,
+    Setdessertshoppingbagtrue,
+    Setdessertshoppingbagfalse,
+
+    isgreenteawhitecookie,
+    Setgreenteawhitecookietrue,
+    Setgreenteawhitecookiefalse,
+
+    isinjeolmimacaron,
+    Setinjeolmimacarontrue,
+    Setinjeolmimacaronfalse,
+
+    ismarlenkacake_cocoa,
+    Setmarlenkacake_cocoatrue,
+    Setmarlenkacake_cocoafalse,
+
+    ismarlenkacake_walnut,
+    Setmarlenkacake_walnuttrue,
+    Setmarlenkacake_walnutfalse,
+
+    ismilkmacaron,
+    Setmilkmacarontrue,
+    Setmilkmacaronfalse,
+
+    ismintchocomacaron,
+    Setmintchocomacarontrue,
+    Setmintchocomacaronfalse,
+
+    israspberrymacaron,
+    Setraspberrymacarontrue,
+    Setraspberrymacaronfalse,
+
+    isvanillamacaron,
+    Setvanillamacarontrue,
+    Setvanillamacaronfalse,
+
+    isyellowcheesemacaron,
+    Setyellowcheesemacarontrue,
+    Setyellowcheesemacaronfalse,
+
+    //////////////////////MD/////////////////////////
+
+    ispoint_9900,
+    Setpoint_9900true,
+    Setpoint_9900false,
+
+    ispoint_10000,
+    Setpoint_10000true,
+    Setpoint_10000false,
+
+    ispoint_30000,
+    Setpoint_30000true,
+    Setpoint_30000false,
+
+    ispoint_50000,
+    Setpoint_50000true,
+    Setpoint_50000false,
+
+    isacrylkeyring_typea, //smart store price
+    Setacrylkeyring_typeatrue,
+    Setacrylkeyring_typeafalse,
+
+    isacrylkeyring_typeb, //smart store price
+    Setacrylkeyring_typebtrue,
+    Setacrylkeyring_typebfalse,
+
+    isacrylkeyring_typec, //smart store price
+    Setacrylkeyring_typectrue,
+    Setacrylkeyring_typecfalse,
+
+    isacrylkeyring_typed, //smart store price
+    Setacrylkeyring_typedtrue,
+    Setacrylkeyring_typedfalse,
+
+    isdripbag_blend,
+    Setdripbag_blendtrue,
+    Setdripbag_blendfalse,
+
+    isethifacekeyring,
+    Setethifacekeyringtrue,
+    Setethifacekeyringfalse,
+
+    isethimonitordoll, //smart store price
+    Setethimonitordolltrue,
+    Setethimonitordollfalse,
+
+    ismaskingtape_babybokthi, //smart store price
+    Setmaskingtape_babybokthitrue,
+    Setmaskingtape_babybokthifalse,
+
+    ismaskingtape_babyethi, //smart store price
+    Setmaskingtape_babyethitrue,
+    Setmaskingtape_babyethifalse,
+
+    ismemopad_babybokthi, //smart store price
+    Setmemopad_babybokthitrue,
+    Setmemopad_babybokthifalse,
+
+    ismemopad_babyethi, //smart store price
+    Setmemopad_babyethitrue,
+    Setmemopad_babyethifalse,
+
+    ismousepad_babybokthi, //smart store price
+    Setmousepad_babybokthitrue,
+    Setmousepad_babybokthifalse,
+
+    ismousepad_babyethi, //smart store price
+    Setmousepad_babyethitrue,
+    Setmousepad_babyethifalse,
+
+    isnote_babyethiandbokthi, //smart store price
+    Setnote_babyethiandbokthitrue,
+    Setnote_babyethiandbokthifalse,
+
+    ispouch_babyethiandbokthi, //smart store price
+    Setpouch_babyethiandbokthitrue,
+    Setpouch_babyethiandbokthifalse,
+
+    isremovablesticker_babybokthi, //smart store price
+    Setremovablesticker_babybokthitrue,
+    Setremovablesticker_babybokthifalse,
+
+    isremovablesticker_babyethi, //smart store price
+    Setremovablesticker_babyethitrue,
+    Setremovablesticker_babyethifalse,
+
+    isremovablesticker_babyethiandbokthi, //smart store price
+    Setremovablesticker_babyethiandbokthitrue,
+    Setremovablesticker_babyethiandbokthifalse,
+
+    isreusabletubler_pink,
+    Setreusabletubler_pinktrue,
+    Setreusabletubler_pinkfalse,
+
+    isreusabletubler_white,
+    Setreusabletubler_whitetrue,
+    Setreusabletubler_whitefalse,
+
+    issmarttok_babyethi,
+    Setsmarttok_babyethitrue,
+    Setsmarttok_babyethifalse,
+
+    issmarttok_babybokthi, //smart store price
+    Setsmarttok_babybokthitrue,
+    Setsmarttok_babybokthifalse,
+  } = OptionOfMenu();
+
+  function optionaction() {
+    show(
+      <div>
+        <Modalboxdesign> </Modalboxdesign>
+      </div>
     );
+  }
+  const {
+    valueofmenu,
+    SetSuggest,
+    SetPopular,
+    SetNewMenu,
+    SetComboMenu,
+    SetCoffee,
+    SetDecaf,
+    SetMilk,
+    SetJuiceDrink,
+    SetSmoothie,
+    SetTeaAde,
+    SetBread,
+    SetDessert,
+    SetMD,
+  } = MenuStatus();
+
+  const { value } = AppViewStatus();
+
+  const {
+    ///////////////////////cake////////////////////////
+    tiramisu,
+    tiramisustrawberry,
+    hazelnutchocolatecake,
+    carrotcake,
+    burntcheesecake,
+    oreomilkcake,
+    //////////////////////combo/////////////////////////
+    coffeeanddonutset,
+    coffeeandonionbagelset,
+    coffeeandplainbagelset,
+    quattrocheesegrilledpaniniset,
+    hamcheessmuffinset,
+    peperonigrilledcheesepaniniset,
+    hotchickengrilledpaniniset,
+    macaronset8plus1, //excluded bag and +1 price.
+    //////////////////////coffee/////////////////////////
+    americano,
+    banaricano,
+    cafelatte,
+    cinnamonlatte,
+    coldbrew,
+    condensedlatte,
+    creamylatte,
+    dolcecoldbrew,
+    espresso,
+    honeyamericano,
+    milkcaramelmacciato,
+    pistachiocafelatte,
+    signatureamericano,
+    signaturecoldbrew,
+    vanillacoldbrew,
+    vanillalatte,
+    //////////////////////decaf/////////////////////////
+    decafamericano,
+    decafbanaricano,
+    decafcafelatte,
+    decafcinnamonlatte,
+    decafcondensed,
+    decafcreamylatte,
+    decafespresso,
+    decafhoneyamericano,
+    decafmilkcaramelmacciato,
+    decafpistachio,
+    decafvanillalatte,
+    //////////////////////milk/////////////////////////
+    blacksugarbubbletea,
+    blacksugarmilktea,
+    chaimilktea,
+    classicmilktea,
+    dalgonalatte,
+    earlgreybubbletea,
+    earlgreymilktea,
+    greentealatte,
+    oatmeallatte,
+    pistachiolatte,
+    realchoco,
+    realvanillabean,
+    ripepersimmonlatte,
+    royalmilktea,
+    strawberrylatte,
+    toffeenutlatte,
+    //////////////////////juicedrink/////////////////////////
+    goldmedalapplejuice, //from web
+    goldmedalsparkling, // from web
+    mangojuice,
+    peachyogurtdrink,
+    perrierlemon,
+    perrierlime,
+    plainyogurtdrink,
+    ripepersimmonjuice,
+    strawberrybananajuice,
+    strawberryjuice,
+    strawberryyogurtdrink,
+    tomatofreshjuice,
+    //////////////////////smothiebanaccino/////////////////////////
+    chocoshake,
+    cookieandcreambanaccino,
+    greenteabanaccino,
+    javachipbanaccino,
+    lemonstrawberrysmoothie,
+    lemonyogurtsmoothie,
+    mangosmoothie,
+    mintchocobanaccino,
+    strawberrypeachsmoothie,
+    strawberrysmoothie,
+    vanillashake,
+    //////////////////////teaade/////////////////////////
+    chamomilelycheetea,
+    chamomile,
+    yujaappletea,
+    earlgrey,
+    gingerlemontea,
+    grapefruitade,
+    grapefruithibiscustea,
+    greengrapeade,
+    hibiscus,
+    honeygrapefruittea,
+    honeylemontea,
+    jejugreentangerinetea,
+    jujubeblackherbaltea,
+    lemonade,
+    lemonpepperminttea,
+    mintyujapeartea,
+    newpeachicedtea,
+    peachade,
+    pearbellflowerroottea,
+    peppermint,
+    //////////////////////bread/////////////////////////
+    clubsandwich,
+    custarddonut,
+    eggbaconsandwich,
+    hamcheeseenglishmuffin,
+    hotchickengrilledpanini,
+    jalapenobulgogisandwich,
+    onionbagel,
+    paulycreamcheese,
+    peperonigrilledcheesepanini,
+    plainbagel,
+    quattrocheesegrilledpanini,
+    tunasandwich,
+    //////////////////////dessert/////////////////////////
+    almondbonbonmacaron,
+    americancookie,
+    chocochipcookie,
+    chocolatemacaron,
+    cookieandcreammacaron,
+    dessertshoppingbag,
+    greenteawhitecookie,
+    injeolmimacaron,
+    marlenkacake_cocoa,
+    marlenkacake_walnut,
+    milkmacaron,
+    mintchocomacaron,
+    raspberrymacaron,
+    vanillamacaron,
+    yellowcheesemacaron,
+    //////////////////////MD/////////////////////////
+    point_9900,
+    point_10000,
+    point_30000,
+    point_50000,
+    acrylkeyring_typea, //smart store price
+    acrylkeyring_typeb, //smart store price
+    acrylkeyring_typec, //smart store price
+    acrylkeyring_typed, //smart store price
+    dripbag_blend,
+    ethifacekeyring,
+    ethimonitordoll, //smart store price
+    maskingtape_babybokthi, //smart store price
+    maskingtape_babyethi, //smart store price
+    memopad_babybokthi, //smart store price
+    memopad_babyethi, //smart store price
+    mousepad_babybokthi, //smart store price
+    mousepad_babyethi, //smart store price
+    note_babyethiandbokthi, //smart store price
+    pouch_babyethiandbokthi, //smart store price
+    removablesticker_babybokthi, //smart store price
+    removablesticker_babyethi, //smart store price
+    removablesticker_babyethiandbokthi, //smart store price
+    reusabletubler_pink,
+    reusabletubler_white,
+    smarttok_babyethi,
+    smarttok_babybokthi, //smart store price
+  } = MenuPriceStatus();
+
+  let vh = window.innerHeight * 0.01;
+  let vw = window.innerWidth * 0.01;
+
+  return (
+    <div
+      style={{ overflow: "scroll", width: window.innerWidth, height: "70vh" }}
+    >
+      {valueofmenu === 1 ? (
+        <div style={{ display: valueofmenu === 1 ? "block" : "none" }}>
+          <Grid
+            container
+            direction={"row"}
+            spacing={0}
+            alignContent={"space-between"}
+          >
+            <Grid item xs={4}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/suggest/strawberryyogurtdrink.png"
+                  onClick={() => {
+                    Setstrawberryyogurtdrinktrue();
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">딸기요거트드링크</Typography>
+                  <Typography align="center">
+                    {strawberryyogurtdrink}원
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={4}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/suggest/raspberrymacaron.png"
+                  onClick={() => {
+                    Setraspberrymacarontrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">산딸기마카롱</Typography>
+                  <Typography align="center">{raspberrymacaron}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={4}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/suggest/peachyogurtdrink.png"
+                  onClick={() => {
+                    Setpeachyogurtdrinktrue();
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">복숭아요거트드링크</Typography>
+                  <Typography align="center">{peachyogurtdrink}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
+          <Grid
+            container
+            direction={"row"}
+            spacing={0}
+            alignItems={"flex-start"}
+          >
+            <Grid item xs={4}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/suggest/newpeachicedtea.png"
+                  onClick={() => {
+                    Setnewpeachicedteatrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">NEW복숭아아이스티</Typography>
+                  <Typography align="center">{newpeachicedtea}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={4}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/suggest/jejugreentangerinetea.png"
+                  onClick={() => {
+                    Setjejugreentangerineteatrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">제주청귤티</Typography>
+                  <Typography align="center">
+                    {jejugreentangerinetea}원
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={4}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/suggest/honeylemontea.png"
+                  onClick={() => {
+                    Sethoneylemonteatrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">허니레몬티</Typography>
+                  <Typography align="center">{honeylemontea}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
+          <Grid
+            container
+            direction={"row"}
+            spacing={0}
+            alignItems={"flex-start"}
+          >
+            <Grid item xs={4}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/suggest/almondbonbonmacaron.png"
+                  onClick={() => {
+                    Setalmondbonbonmacarontrue();
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">아몬드봉봉마카롱</Typography>
+                  <Typography align="center">
+                    {almondbonbonmacaron}원
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+
+            <Grid item xs={4}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image={
+                    value === 3
+                      ? "menuimages/coffee/americano.png"
+                      : "menuimages/suggest/banaricano.png"
+                  }
+                  onClick={() => {
+                    value === 3 ? Setamericanotrue() : Setbanaricanotrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">
+                    {value === 3 ? "아메리카노" : "바나리카노"}
+                  </Typography>
+                  <Typography align="center">
+                    {value === 3 ? americano : banaricano}원
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+
+            <Grid item xs={4}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/suggest/honeygrapefruittea.png"
+                  onClick={() => {
+                    Sethoneygrapefruitteatrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">허니자몽티</Typography>
+                  <Typography align="center">{honeygrapefruittea}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
+        </div>
+      ) : (
+        <p></p>
+      )}
+
+      {valueofmenu === 2 ? (
+        <div style={{ display: valueofmenu === 2 ? "block" : "none" }}>
+          <Grid
+            container
+            direction={"row"}
+            spacing={0}
+            alignItems={"flex-start"}
+          >
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/cake/tiramisu.png"
+                  onClick={() => {
+                    Settiramisutrue();
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">티라미수</Typography>
+                  <Typography align="center">{tiramisu}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/cake/burntcheesecake.png"
+                  onClick={() => {
+                    Setburntcheesecaketrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">번트치즈케이크</Typography>
+                  <Typography align="center">{burntcheesecake}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/cake/carrotcake.png"
+                  onClick={() => {
+                    Setcarrotcaketrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">당근케이크</Typography>
+                  <Typography align="center">{carrotcake}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/cake/hazelnutchocolatecake.png"
+                  onClick={() => {
+                    Sethazelnutchocolatecaketrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography
+                    align="center"
+                    sx={{ margin: "0%", padding: "0%" }}
+                  >
+                    헤이즐넛초콜릿케이크
+                  </Typography>
+                  <Typography align="center">
+                    {hazelnutchocolatecake}원
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
+
+          <Grid
+            container
+            direction={"row"}
+            spacing={0}
+            alignItems={"flex-start"}
+          >
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/cake/oreomilkcake.png"
+                  onClick={() => {
+                    Setoreomilkcaketrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">오레오우유케이크</Typography>
+                  <Typography align="center">{oreomilkcake}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/cake/strawberrytiramisu.png"
+                  onClick={() => {
+                    Settiramisustrawberrytrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">딸기티라미수</Typography>
+                  <Typography align="center">{tiramisustrawberry}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
+        </div>
+      ) : (
+        <p></p>
+      )}
+
+      {valueofmenu === 3 ? (
+        <div style={{ display: valueofmenu === 3 ? "block" : "none" }}></div>
+      ) : (
+        <p></p>
+      )}
+
+      {valueofmenu === 4 ? (
+        <div style={{ display: valueofmenu === 4 ? "block" : "none" }}>
+          <Grid
+            container
+            direction={"row"}
+            spacing={0}
+            alignItems={"flex-start"}
+          >
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/setmenu/coffeedonutset.png"
+                  onClick={() => {
+                    Setcoffeeanddonutsettrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">커피&도넛세트</Typography>
+                  <Typography align="center">{coffeeanddonutset}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/setmenu/coffeeonionbagelset.png"
+                  onClick={() => {
+                    Setcoffeeandonionbagelsettrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">커피&어니언베이글세트</Typography>
+                  <Typography align="center">
+                    {coffeeandonionbagelset}원
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/setmenu/coffeeplainbagelset.png"
+                  onClick={() => {
+                    Setcoffeeandplainbagelsettrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">커피&플레인베이글세트</Typography>
+                  <Typography align="center">
+                    {coffeeandplainbagelset}원
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/setmenu/cuatrocheesegrilledpaniniset.png"
+                  onClick={() => {
+                    Setquattrocheesegrilledpaninisettrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">
+                    콰트로치즈그릴드파니니 세트
+                  </Typography>
+                  <Typography align="center">
+                    {quattrocheesegrilledpaniniset}원
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
+          <Grid
+            container
+            direction={"row"}
+            spacing={0}
+            alignItems={"flex-start"}
+          >
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/setmenu/hamcheesemuffinset.png"
+                  onClick={() => {
+                    Sethamcheessmuffinsettrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">햄치즈머핀세트</Typography>
+                  <Typography align="center">{hamcheessmuffinset}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/setmenu/pepperonigrilledcheesepaniniset.png"
+                  onClick={() => {
+                    Setpeperonigrilledcheesepaninisettrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">
+                    페퍼로니그릴드치즈파니니 세트
+                  </Typography>
+                  <Typography align="center">
+                    {peperonigrilledcheesepaniniset}원
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/setmenu/hotchickengrilledcheesepaniniset.png"
+                  onClick={() => {
+                    Sethotchickengrilledpaninisettrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">
+                    핫치킨그릴드치즈파니니 세트
+                  </Typography>
+                  <Typography align="center">
+                    {hotchickengrilledpaniniset}원
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/setmenu/macaronset(8+1).png"
+                  onClick={() => {
+                    Setmacaronsetplustrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">마카롱세트8+1</Typography>
+                  <Typography align="center">{macaronset8plus1}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
+        </div>
+      ) : (
+        <p></p>
+      )}
+
+      {valueofmenu === 5 ? (
+        <div style={{ display: valueofmenu === 5 ? "block" : "none" }}>
+          <Grid
+            container
+            direction={"row"}
+            spacing={0}
+            alignItems={"flex-start"}
+          >
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/coffee/americano.png"
+                  onClick={() => {
+                    Setamericanotrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">아메리카노</Typography>
+                  <Typography align="center">{americano}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/coffee/banaricano.png"
+                  onClick={() => {
+                    Setbanaricanotrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">바나리카노</Typography>
+                  <Typography align="center">{banaricano}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/coffee/cafelatte.png"
+                  onClick={() => {
+                    Setcafelattetrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">카페라떼</Typography>
+                  <Typography align="center">{cafelatte}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/coffee/cinnamonlatte.png"
+                  onClick={() => {
+                    Setcinnamonlattetrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">시나몬라떼</Typography>
+                  <Typography align="center">{cinnamonlatte}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
+          <Grid
+            container
+            direction={"row"}
+            spacing={0}
+            alignItems={"flex-start"}
+          >
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/coffee/coldbrew.png"
+                  onClick={() => {
+                    Setcoldbrewtrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">콜드브루</Typography>
+                  <Typography align="center">{coldbrew}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/coffee/condensedmilkcafelatte.png"
+                  onClick={() => {
+                    Setcondensedlattetrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">연유라떼</Typography>
+                  <Typography align="center">{condensedlatte}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/coffee/creamylatte.png"
+                  onClick={() => {
+                    Setcreamylattetrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">크리미라떼</Typography>
+                  <Typography align="center">{creamylatte}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/coffee/dolcecoldbrew.png"
+                  onClick={() => {
+                    Setdolcecoldbrewtrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">돌체 콜드브루</Typography>
+                  <Typography align="center">{dolcecoldbrew}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
+          <Grid
+            container
+            direction={"row"}
+            spacing={0}
+            alignItems={"flex-start"}
+          >
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/coffee/espresso.png"
+                  onClick={() => {
+                    Setespressotrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">에스프레소</Typography>
+                  <Typography align="center">{espresso}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/coffee/honeyamericano.png"
+                  onClick={() => {
+                    Sethoneyamericanotrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">허니아메리카노</Typography>
+                  <Typography align="center">{honeyamericano}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/coffee/milkcaramelmacchiato.png"
+                  onClick={() => {
+                    Setmilkcaramelmacciatotrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">밀크카라멜마키아또</Typography>
+                  <Typography align="center">
+                    {milkcaramelmacciato}원
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/coffee/pistachiocafelatte.png"
+                  onClick={() => {
+                    Setpistachiocafelattetrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">피스타치오카페라떼</Typography>
+                  <Typography align="center">{pistachiocafelatte}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
+          <Grid
+            container
+            direction={"row"}
+            spacing={0}
+            alignItems={"flex-start"}
+          >
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/coffee/signatureamericano.png"
+                  onClick={() => {
+                    Setsignatureamericanotrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">시그니처아메리카노</Typography>
+                  <Typography align="center">{signatureamericano}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/coffee/signaturecoldbrew.png"
+                  onClick={() => {
+                    Setsignaturecoldbrewtrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">시그니처콜드브루</Typography>
+                  <Typography align="center">{signaturecoldbrew}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/coffee/vanillacoldbrew.png"
+                  onClick={() => {
+                    Setvanillacoldbrewtrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">바닐라 콜드브루</Typography>
+                  <Typography align="center">{vanillacoldbrew}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/coffee/vanillalatte.png"
+                  onClick={() => {
+                    Setvanillalattetrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">바닐라라떼</Typography>
+                  <Typography align="center">{vanillalatte}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
+        </div>
+      ) : (
+        <p></p>
+      )}
+
+      {valueofmenu === 6 ? (
+        <div style={{ display: valueofmenu === 6 ? "block" : "none" }}>
+          <Grid
+            container
+            direction={"row"}
+            spacing={0}
+            alignItems={"flex-start"}
+          >
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/decaf/decafamericano.png"
+                  onClick={() => {
+                    Setdecafamericanotrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">디카페인 아메리카노</Typography>
+                  <Typography align="center">{decafamericano}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/decaf/decafbanaricano.png"
+                  onClick={() => {
+                    Setdecafbanaricanotrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">디카페인 바나리카노</Typography>
+                  <Typography align="center">{decafbanaricano}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/decaf/decafcafelatte.png"
+                  onClick={() => {
+                    Setdecafcafelattetrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">디카페인 카페라떼</Typography>
+                  <Typography align="center">{decafcafelatte}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/decaf/decafcinnamonlatte.png"
+                  onClick={() => {
+                    Setdecafcinnamonlattetrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">디카페인 시나몬라떼</Typography>
+                  <Typography align="center">{decafcinnamonlatte}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
+          <Grid
+            container
+            direction={"row"}
+            spacing={0}
+            alignItems={"flex-start"}
+          >
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/decaf/decafcondensedmilkcafelatte.png"
+                  onClick={() => {
+                    Setdecafcondensedtrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">디카페인 연유라떼</Typography>
+                  <Typography align="center">{decafcondensed}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/decaf/decafcreamylatte.png"
+                  onClick={() => {
+                    Setdecafcreamylattetrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">디카페인 크리미라떼</Typography>
+                  <Typography align="center">{decafcreamylatte}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/decaf/decafespresso.png"
+                  onClick={() => {
+                    Setdecafespressotrue();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">디카페인 에스프레소</Typography>
+                  <Typography align="center">{decafespresso}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/decaf/decafhoneyamericano.png"
+                  onClick={() => {
+                    Setdecafhoneyamericanotrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">
+                    디카페인 허니아메리카노
+                  </Typography>
+                  <Typography align="center">
+                    {decafhoneyamericano}원
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
+          <Grid
+            container
+            direction={"row"}
+            spacing={0}
+            alignItems={"flex-start"}
+          >
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/decaf/decafmilkcaramelmacchiato.png"
+                  onClick={() => {
+                    Setdecafmilkcaramelmacciatotrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">
+                    디카페인 밀크카라멜마키아또
+                  </Typography>
+                  <Typography align="center">
+                    {decafmilkcaramelmacciato}원
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/decaf/decafpistachiocafelatte.png"
+                  onClick={() => {
+                    Setdecafpistachiotrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">
+                    디카페인 피스타치오카페라떼
+                  </Typography>
+                  <Typography align="center">{decafpistachio}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/decaf/decafvanillalatte.png"
+                  onClick={() => {
+                    Setdecafvanillalattetrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">디카페인 바닐라라떼</Typography>
+                  <Typography align="center">{decafvanillalatte}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
+        </div>
+      ) : (
+        <p></p>
+      )}
+
+      {valueofmenu === 7 ? (
+        <div style={{ display: valueofmenu === 7 ? "block" : "none" }}>
+          <Grid
+            container
+            direction={"row"}
+            spacing={0}
+            alignItems={"flex-start"}
+          >
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/milktea_latte/blacksugarbubbletea.png"
+                  onClick={() => {
+                    Setblacksugarbubbleteatrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">흑당버블티</Typography>
+                  <Typography align="center">
+                    {blacksugarbubbletea}원
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/milktea_latte/blacksugarmilktea.png"
+                  onClick={() => {}}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">흑당밀크티</Typography>
+                  <Typography align="center">{blacksugarmilktea}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/milktea_latte/chaimilktea.png"
+                  onClick={() => {
+                    Setchaimilkteatrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">차이밀크티</Typography>
+                  <Typography align="center">{chaimilktea}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/milktea_latte/classicmilktea.png"
+                  onClick={() => {
+                    Setclassicmilkteatrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">클래식밀크티</Typography>
+                  <Typography align="center">{classicmilktea}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
+          <Grid
+            container
+            direction={"row"}
+            spacing={0}
+            alignItems={"flex-start"}
+          >
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/milktea_latte/dalgonalatte.png"
+                  onClick={() => {
+                    Setdalgonalattetrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">달고나라떼</Typography>
+                  <Typography align="center">{dalgonalatte}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/milktea_latte/earlgreybubbletea.png"
+                  onClick={() => {
+                    Setearlgreybubbleteatrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">얼그레이버블티</Typography>
+                  <Typography align="center">{earlgreybubbletea}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/milktea_latte/earlgreymilktea.png"
+                  onClick={() => {
+                    Setearlgreymilkteatrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">얼그레이밀크티</Typography>
+                  <Typography align="center">{earlgreymilktea}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/milktea_latte/greentealatte.png"
+                  onClick={() => {
+                    Setgreentealattetrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">녹차라떼</Typography>
+                  <Typography align="center">{greentealatte}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
+          <Grid
+            container
+            direction={"row"}
+            spacing={0}
+            alignItems={"flex-start"}
+          >
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/milktea_latte/oatmeallatte.png"
+                  onClick={() => {
+                    Setoatmeallattetrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">오트밀라떼</Typography>
+                  <Typography align="center">{oatmeallatte}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/milktea_latte/pistachiolatte.png"
+                  onClick={() => {
+                    Setpistachiolattetrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">피스타치오라떼</Typography>
+                  <Typography align="center">{pistachiolatte}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/milktea_latte/realchoco.png"
+                  onClick={() => {
+                    Setrealchocotrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">리얼초코</Typography>
+                  <Typography align="center">{realchoco}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/milktea_latte/realvanillabean.png"
+                  onClick={() => {
+                    Setrealvanillabeantrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">리얼바닐라빈</Typography>
+                  <Typography align="center">{realvanillabean}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
+          <Grid
+            container
+            direction={"row"}
+            spacing={0}
+            alignItems={"flex-start"}
+          >
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/milktea_latte/ripepersimmonlatte.png"
+                  onClick={() => {
+                    Setripepersimmonlattetrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">홍시라떼</Typography>
+                  <Typography align="center">{ripepersimmonlatte}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/milktea_latte/royalmilktea.png"
+                  onClick={() => {
+                    Setroyalmilkteatrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">로열밀크티</Typography>
+                  <Typography align="center">{royalmilktea}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/milktea_latte/strawberrylatte.png"
+                  onClick={() => {
+                    Setstrawberrylattetrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">딸기라떼</Typography>
+                  <Typography align="center">{strawberrylatte}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/milktea_latte/toffeenutlatte.png"
+                  onClick={() => {
+                    Settoffeenutlattetrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">토피넛라떼</Typography>
+                  <Typography align="center">{toffeenutlatte}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
+        </div>
+      ) : (
+        <p></p>
+      )}
+
+      {valueofmenu === 8 ? (
+        <div style={{ display: valueofmenu === 8 ? "block" : "none" }}>
+          <Grid
+            container
+            direction={"row"}
+            spacing={0}
+            alignItems={"flex-start"}
+          >
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/juicedrink/goldmedalapplejuice.png"
+                  onClick={() => {
+                    Setgoldmedalapplejuicetrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">골드메달 애플쥬스</Typography>
+                  <Typography align="center">
+                    {goldmedalapplejuice}원
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/juicedrink/goldmedalapplesparkling.png"
+                  onClick={() => {
+                    Setgoldmedalsparklingtrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">골드메달 애플스파클링</Typography>
+                  <Typography align="center">{goldmedalsparkling}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/juicedrink/mangojuice.png"
+                  onClick={() => {
+                    Setmangojuicetrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">망고쥬스</Typography>
+                  <Typography align="center">{mangojuice}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/juicedrink/peachyogurtdrink.png"
+                  onClick={() => {
+                    Setpeachyogurtdrinktrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">복숭아요거트드링크</Typography>
+                  <Typography align="center">{peachyogurtdrink}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
+          <Grid
+            container
+            direction={"row"}
+            spacing={0}
+            alignItems={"flex-start"}
+          >
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/juicedrink/perrierlemon.png"
+                  onClick={() => {
+                    Setperrierlemontrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">페리에레몬</Typography>
+                  <Typography align="center">{perrierlemon}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/juicedrink/perrierlime.png"
+                  onClick={() => {
+                    Setperrierlimetrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">페리에라임</Typography>
+                  <Typography align="center">{perrierlime}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/juicedrink/plainyogurtdrink.png"
+                  onClick={() => {
+                    Setplainyogurtdrinktrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">플레인요거트드링크</Typography>
+                  <Typography align="center">{plainyogurtdrink}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/juicedrink/ripepersimmonjuice.png"
+                  onClick={() => {
+                    Setripepersimmonjuicetrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">홍시쥬스</Typography>
+                  <Typography align="center">{ripepersimmonjuice}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
+          <Grid
+            container
+            direction={"row"}
+            spacing={0}
+            alignItems={"flex-start"}
+          >
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/juicedrink/strawberrybananajuice.png"
+                  onClick={() => {
+                    Setstrawberrybananajuicetrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">딸기바나나쥬스</Typography>
+                  <Typography align="center">
+                    {strawberrybananajuice}원
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/juicedrink/strawberryjuice.png"
+                  onClick={() => {
+                    Setstrawberryjuicetrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">딸기쥬스</Typography>
+                  <Typography align="center">{strawberryjuice}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/juicedrink/strawberryyogurtdrink.png"
+                  onClick={() => {
+                    Setstrawberryyogurtdrinktrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">딸기요거트드링크</Typography>
+                  <Typography align="center">
+                    {strawberryyogurtdrink}원
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/juicedrink/tomatofreshjuice.png"
+                  onClick={() => {
+                    Settomatofreshjuicetrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">토마토생과일쥬스</Typography>
+                  <Typography align="center">{tomatofreshjuice}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
+        </div>
+      ) : (
+        <p></p>
+      )}
+
+      {valueofmenu === 9 ? (
+        <div style={{ display: valueofmenu === 9 ? "block" : "none" }}>
+          <Grid
+            container
+            direction={"row"}
+            spacing={0}
+            alignItems={"flex-start"}
+          >
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/banaccino_smoothie/chocoshake.png"
+                  onClick={() => {
+                    Setchocoshaketrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">초코쉐이크</Typography>
+                  <Typography align="center">{chocoshake}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/banaccino_smoothie/cookie&creambanaccino.png"
+                  onClick={() => {
+                    Setcookieandcreambanaccinotrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">쿠앤크바나치노</Typography>
+                  <Typography align="center">
+                    {cookieandcreambanaccino}원
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/banaccino_smoothie/greenteabanaccino.png"
+                  onClick={() => {
+                    Setgreenteabanaccinotrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">녹차바나치노</Typography>
+                  <Typography align="center">{greenteabanaccino}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/banaccino_smoothie/javachipbanaccino.png"
+                  onClick={() => {
+                    Setjavachipbanaccinotrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">자바칩바나치노</Typography>
+                  <Typography align="center">{javachipbanaccino}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
+          <Grid
+            container
+            direction={"row"}
+            spacing={0}
+            alignItems={"flex-start"}
+          >
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/banaccino_smoothie/lemonstrawberrysmoothie.png"
+                  onClick={() => {
+                    Setlemonstrawberrysmoothietrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">레몬딸기스무디</Typography>
+                  <Typography align="center">
+                    {lemonstrawberrysmoothie}원
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/banaccino_smoothie/lemonyogurtsmoothie.png"
+                  onClick={() => {
+                    Setlemonyogurtsmoothietrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">레몬요거트스무디</Typography>
+                  <Typography align="center">
+                    {lemonyogurtsmoothie}원
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/banaccino_smoothie/mangosmoothie.png"
+                  onClick={() => {
+                    Setmangosmoothietrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">망고스무디</Typography>
+                  <Typography align="center">{mangosmoothie}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/banaccino_smoothie/mintchocolatebanaccino.png"
+                  onClick={() => {
+                    Setmintchocobanaccinotrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">민트초코바나치노</Typography>
+                  <Typography align="center">{mintchocobanaccino}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
+          <Grid
+            container
+            direction={"row"}
+            spacing={0}
+            alignItems={"flex-start"}
+          >
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/banaccino_smoothie/strawberrypeachsmoothie.png"
+                  onClick={() => {
+                    Setstrawberrypeachsmoothietrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">딸기복숭아스무디</Typography>
+                  <Typography align="center">
+                    {strawberrypeachsmoothie}원
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/banaccino_smoothie/strawberrysmoothie.png"
+                  onClick={() => {
+                    Setstrawberrysmoothietrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">딸기스무디</Typography>
+                  <Typography align="center">{strawberrysmoothie}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/banaccino_smoothie/vanillashake.png"
+                  onClick={() => {
+                    Setvanillashaketrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">바닐라쉐이크</Typography>
+                  <Typography align="center">{vanillashake}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
+        </div>
+      ) : (
+        <p></p>
+      )}
+
+      {valueofmenu === 10 ? (
+        <div style={{ display: valueofmenu === 10 ? "block" : "none" }}>
+          <Grid
+            container
+            direction={"row"}
+            spacing={0}
+            alignItems={"flex-start"}
+          >
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/tea_ade/chamomilelycheetea.png"
+                  onClick={() => {
+                    Setchamomilelycheeteatrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">캐모마일리치티</Typography>
+                  <Typography align="center">{chamomilelycheetea}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/tea_ade/chamomiletea.png"
+                  onClick={() => {
+                    Setchamomiletrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">캐모마일</Typography>
+                  <Typography align="center">{chamomile}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/tea_ade/citronappletea.png"
+                  onClick={() => {
+                    Setyujaappleteatrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">유자애플티</Typography>
+                  <Typography align="center">{yujaappletea}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/tea_ade/earlgreytea.png"
+                  onClick={() => {
+                    Setearlgreytrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">얼그레이</Typography>
+                  <Typography align="center">{earlgrey}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
+          <Grid
+            container
+            direction={"row"}
+            spacing={0}
+            alignItems={"flex-start"}
+          >
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/tea_ade/gingerlemontea.png"
+                  onClick={() => {
+                    Setgingerlemonteatrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">생강레몬티</Typography>
+                  <Typography align="center">{gingerlemontea}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/tea_ade/grapefruitade.png"
+                  onClick={() => {
+                    Setgrapefruitadetrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">자몽에이드</Typography>
+                  <Typography align="center">{grapefruitade}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/tea_ade/grapefruithibiscustea.png"
+                  onClick={() => {
+                    Setgrapefruithibiscusteatrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">자몽히비스커스티</Typography>
+                  <Typography align="center">
+                    {grapefruithibiscustea}원
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/tea_ade/greengrapeade.png"
+                  onClick={() => {
+                    Setgreengrapeadetrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">청포도에이드</Typography>
+                  <Typography align="center">{greengrapeade}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
+          <Grid
+            container
+            direction={"row"}
+            spacing={0}
+            alignItems={"flex-start"}
+          >
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/tea_ade/hibiscustea.png"
+                  onClick={() => {
+                    Sethibiscustrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">히비스커스</Typography>
+                  <Typography align="center">{hibiscus}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/tea_ade/honeygrapefruittea.png"
+                  onClick={() => {
+                    Sethoneygrapefruitteatrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">허니자몽티</Typography>
+                  <Typography align="center">{honeygrapefruittea}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/tea_ade/honeylemontea.png"
+                  onClick={() => {
+                    Sethoneylemonteatrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">허니레몬티</Typography>
+                  <Typography align="center">{honeylemontea}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/tea_ade/jejugreentangerinetea.png"
+                  onClick={() => {
+                    Setjejugreentangerineteatrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">제주청귤티</Typography>
+                  <Typography align="center">
+                    {jejugreentangerinetea}원
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
+          <Grid
+            container
+            direction={"row"}
+            spacing={0}
+            alignItems={"flex-start"}
+          >
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/tea_ade/jujubeblackherbaltea.png"
+                  onClick={() => {
+                    Setjujubeblackherbalteatrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">대추쌍화차</Typography>
+                  <Typography align="center">
+                    {jujubeblackherbaltea}원
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/tea_ade/lemonade.png"
+                  onClick={() => {
+                    Setlemonadetrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">레몬에이드</Typography>
+                  <Typography align="center">{lemonade}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/tea_ade/lemonpepperminttea.png"
+                  onClick={() => {
+                    Setlemonpeppermintteatrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">레몬페퍼민트티</Typography>
+                  <Typography align="center">{lemonpepperminttea}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/tea_ade/mintyujapeartea.png"
+                  onClick={() => {
+                    Setmintyujapearteatrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">민트유자페어티</Typography>
+                  <Typography align="center">{mintyujapeartea}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
+          <Grid
+            container
+            direction={"row"}
+            spacing={0}
+            alignItems={"flex-start"}
+          >
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/tea_ade/newpeachicedtea.png"
+                  onClick={() => {
+                    Setnewpeachicedteatrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">NEW복숭아아이스티</Typography>
+                  <Typography align="center">{newpeachicedtea}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/tea_ade/peachade.png"
+                  onClick={() => {
+                    Setpeachadetrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">복숭아에이드</Typography>
+                  <Typography align="center">{peachade}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/tea_ade/pearbellflowerroottea.png"
+                  onClick={() => {
+                    Setpearbellflowerrootteatrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">배도라지차</Typography>
+                  <Typography align="center">
+                    {pearbellflowerroottea}원
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/tea_ade/peppermint tea.png"
+                  onClick={() => {
+                    Setpepperminttrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">페퍼민트</Typography>
+                  <Typography align="center">{peppermint}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
+        </div>
+      ) : (
+        <p></p>
+      )}
+
+      {valueofmenu === 11 ? (
+        <div style={{ display: valueofmenu === 11 ? "block" : "none" }}>
+          <Grid
+            container
+            direction={"row"}
+            spacing={0}
+            alignItems={"flex-start"}
+          >
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/bread/clubsandwich.png"
+                  onClick={() => {
+                    Setclubsandwichtrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">클럽샌드위치</Typography>
+                  <Typography align="center">{clubsandwich}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/bread/custarddonut.png"
+                  onClick={() => {
+                    Setcustarddonuttrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">커스터드도넛</Typography>
+                  <Typography align="center">{custarddonut}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/bread/eggbaconsandwich.png"
+                  onClick={() => {
+                    Seteggbaconsandwichtrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">에그베이컨샌드위치</Typography>
+                  <Typography align="center">{eggbaconsandwich}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/bread/hamcheeseenglishmuffin.png"
+                  onClick={() => {
+                    Sethamcheeseenglishmuffintrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">햄치즈잉글리시머핀</Typography>
+                  <Typography align="center">
+                    {hamcheeseenglishmuffin}원
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
+          <Grid
+            container
+            direction={"row"}
+            spacing={0}
+            alignItems={"flex-start"}
+          >
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/bread/hotchickengrilledcheesepanini.png"
+                  onClick={() => {
+                    Sethotchickengrilledpaninitrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">핫치킨그릴드치즈파니니</Typography>
+                  <Typography align="center">
+                    {hotchickengrilledpanini}원
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/bread/jalapenobulgogisandwich.png"
+                  onClick={() => {
+                    Setjalapenobulgogisandwichtrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">할라피뇨불고기샌드위치</Typography>
+                  <Typography align="center">
+                    {jalapenobulgogisandwich}원
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/bread/onionbagel.png"
+                  onClick={() => {
+                    Setonionbageltrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">어니언베이글</Typography>
+                  <Typography align="center">{onionbagel}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/bread/paulycreamcheese.png"
+                  onClick={() => {
+                    Setpaulycreamcheesetrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">폴리크림치즈</Typography>
+                  <Typography align="center">{paulycreamcheese}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
+          <Grid
+            container
+            direction={"row"}
+            spacing={0}
+            alignItems={"flex-start"}
+          >
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/bread/peperonigrilledcheesepanini.png"
+                  onClick={() => {
+                    Setpeperonigrilledcheesepaninitrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">
+                    페퍼로니그릴드치즈파니니
+                  </Typography>
+                  <Typography align="center">
+                    {peperonigrilledcheesepanini}원
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/bread/plainbagel.png"
+                  onClick={() => {
+                    Setplainbageltrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">플레인베이글</Typography>
+                  <Typography align="center">{plainbagel}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/bread/quatrocheesegrilledpanini.png"
+                  onClick={() => {
+                    Setquattrocheesegrilledpaninitrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">콰트로치즈그릴드파니니</Typography>
+                  <Typography align="center">
+                    {quattrocheesegrilledpanini}원
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/bread/tunasandwich.png"
+                  onClick={() => {
+                    Settunasandwichtrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">튜나샌드위치</Typography>
+                  <Typography align="center">{tunasandwich}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
+        </div>
+      ) : (
+        <p></p>
+      )}
+
+      {valueofmenu === 12 ? (
+        <div style={{ display: valueofmenu === 12 ? "block" : "none" }}>
+          <Grid
+            container
+            direction={"row"}
+            spacing={0}
+            alignItems={"flex-start"}
+          >
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/dessert/almondbonbonmacaron.png"
+                  onClick={() => {
+                    Setalmondbonbonmacarontrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">아몬드봉봉마카롱</Typography>
+                  <Typography align="center">
+                    {almondbonbonmacaron}원
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/dessert/americancookie.png"
+                  onClick={() => {
+                    Setamericancookietrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">아메리칸쿠키</Typography>
+                  <Typography align="center">{americancookie}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/dessert/chocochipcookie.png"
+                  onClick={() => {
+                    Setchocochipcookietrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">초코칩쿠키</Typography>
+                  <Typography align="center">{chocochipcookie}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/dessert/chocolatemacaron.png"
+                  onClick={() => {
+                    Setchocolatemacarontrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">초콜릿마카롱</Typography>
+                  <Typography align="center">{chocolatemacaron}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
+          <Grid
+            container
+            direction={"row"}
+            spacing={0}
+            alignItems={"flex-start"}
+          >
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/dessert/cookeandcreammacaron.png"
+                  onClick={() => {
+                    Setcookieandcreammacarontrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">쿠키앤크림마카롱</Typography>
+                  <Typography align="center">
+                    {cookieandcreammacaron}원
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/dessert/dessertshoppingbag.png"
+                  onClick={() => {
+                    Setdessertshoppingbagtrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">디저트쇼핑백</Typography>
+                  <Typography align="center">{dessertshoppingbag}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/dessert/greenteawhitecookie.png"
+                  onClick={() => {
+                    Setgreenteawhitecookietrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">말차화이트쿠키</Typography>
+                  <Typography align="center">
+                    {greenteawhitecookie}원
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/dessert/injeolmimacaron.png"
+                  onClick={() => {
+                    Setinjeolmimacarontrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">인절미마카롱</Typography>
+                  <Typography align="center">{injeolmimacaron}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
+          <Grid
+            container
+            direction={"row"}
+            spacing={0}
+            alignItems={"flex-start"}
+          >
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/dessert/marlenkacake(cocoa).png"
+                  onClick={() => {
+                    Setmarlenkacake_cocoatrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">말렌카케이크(코코아)</Typography>
+                  <Typography align="center">{marlenkacake_cocoa}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/dessert/marlenkacake(walnut).png"
+                  onClick={() => {
+                    Setmarlenkacake_walnuttrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">말렌카케이크(호두)</Typography>
+                  <Typography align="center">
+                    {marlenkacake_walnut}원
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/dessert/milkmacaron.png"
+                  onClick={() => {
+                    Setmilkmacarontrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">우유마카롱</Typography>
+                  <Typography align="center">{milkmacaron}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/dessert/mintchocolatemacaron.png"
+                  onClick={() => {
+                    Setmintchocomacarontrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">민트초코마카롱</Typography>
+                  <Typography align="center">{mintchocomacaron}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
+          <Grid
+            container
+            direction={"row"}
+            spacing={0}
+            alignItems={"flex-start"}
+          >
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/dessert/raspberrymacaron.png"
+                  onClick={() => {
+                    Setraspberrymacarontrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">산딸기마카롱</Typography>
+                  <Typography align="center">{raspberrymacaron}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/dessert/vanillamacaron.png"
+                  onClick={() => {
+                    Setvanillamacarontrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">바닐라마카롱</Typography>
+                  <Typography align="center">{vanillamacaron}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/dessert/yellowcheesemacaron.png"
+                  onClick={() => {
+                    Setyellowcheesemacarontrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">황치즈마카롱</Typography>
+                  <Typography align="center">
+                    {yellowcheesemacaron}원
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
+        </div>
+      ) : (
+        <p></p>
+      )}
+
+      {valueofmenu === 13 ? (
+        <div style={{ display: valueofmenu === 13 ? "block" : "none" }}>
+          <Grid
+            container
+            direction={"row"}
+            spacing={0}
+            alignItems={"flex-start"}
+          >
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/md/9900point.png"
+                  onClick={() => {
+                    Setpoint_9900true();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">
+                    바나프레소 상품권 9,900원권
+                  </Typography>
+                  <Typography align="center">{point_9900}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/md/10000point.png"
+                  onClick={() => {
+                    Setpoint_10000true();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">
+                    바나프레소 상품권 1만원권
+                  </Typography>
+                  <Typography align="center">{point_10000}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/md/30000point.png"
+                  onClick={() => {
+                    Setpoint_30000true();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">
+                    바나프레소 상품권 3만원권
+                  </Typography>
+                  <Typography align="center">{point_30000}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/md/50000point.png"
+                  onClick={() => {
+                    Setpoint_50000true();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">
+                    바나프레소 상품권 5만원권
+                  </Typography>
+                  <Typography align="center">{point_50000}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
+          <Grid
+            container
+            direction={"row"}
+            spacing={0}
+            alignItems={"flex-start"}
+          >
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/md/acrylickeyringatype.png"
+                  onClick={() => {
+                    Setacrylkeyring_typeatrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">아크릴키링_A타입</Typography>
+                  <Typography align="center">{acrylkeyring_typea}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/md/acrylickeyringbtype.png"
+                  onClick={() => {
+                    Setacrylkeyring_typebtrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">아크릴키링_B타입</Typography>
+                  <Typography align="center">{acrylkeyring_typeb}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/md/acrylickeyringctype.png"
+                  onClick={() => {
+                    Setacrylkeyring_typectrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">아크릴키링_C타입</Typography>
+                  <Typography align="center">{acrylkeyring_typec}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/md/acrylickeyringdtype.png"
+                  onClick={() => {
+                    Setacrylkeyring_typedtrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">아크릴키링_D타입</Typography>
+                  <Typography align="center">{acrylkeyring_typed}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
+          <Grid
+            container
+            direction={"row"}
+            spacing={0}
+            alignItems={"flex-start"}
+          >
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/md/dripbagblend.png"
+                  onClick={() => {
+                    Setdripbag_blendtrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">드립백(블렌드)</Typography>
+                  <Typography align="center">{dripbag_blend}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/md/ethifacekeyring.png"
+                  onClick={() => {
+                    Setethifacekeyringtrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">에티얼굴키링</Typography>
+                  <Typography align="center">{ethifacekeyring}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/md/ethimonitorplush.png"
+                  onClick={() => {
+                    Setethimonitordolltrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">에티모니터인형</Typography>
+                  <Typography align="center">{ethimonitordoll}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/md/maskingtapebabybokthi.png"
+                  onClick={() => {
+                    Setmaskingtape_babybokthitrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">
+                    마스킹테이프_베이비복티
+                  </Typography>
+                  <Typography align="center">
+                    {maskingtape_babybokthi}원
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
+          <Grid
+            container
+            direction={"row"}
+            spacing={0}
+            alignItems={"flex-start"}
+          >
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/md/maskingtapebabyethi.png"
+                  onClick={() => {
+                    Setmaskingtape_babyethitrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">
+                    마스킹테이프_베이비에티
+                  </Typography>
+                  <Typography align="center">
+                    {maskingtape_babyethi}원
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/md/memopadbabybokthi.png"
+                  onClick={() => {
+                    Setmemopad_babybokthitrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">메모패드_베이비복티</Typography>
+                  <Typography align="center">{memopad_babybokthi}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/md/memopadbabyethi.png"
+                  onClick={() => {
+                    Setmemopad_babyethitrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">메모패드_베이비에티</Typography>
+                  <Typography align="center">{memopad_babyethi}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/md/mousepadbabybokthi.png"
+                  onClick={() => {
+                    Setmousepad_babybokthitrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">마우스패드_베이비복티</Typography>
+                  <Typography align="center">
+                    {mousepad_babybokthi}원
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
+          <Grid
+            container
+            direction={"row"}
+            spacing={0}
+            alignItems={"flex-start"}
+          >
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/md/mousepadbabyethi.png"
+                  onClick={() => {
+                    Setmousepad_babyethitrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">마우스패드_베이비에티</Typography>
+                  <Typography align="center">{mousepad_babyethi}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/md/notebabyethibokthi.png"
+                  onClick={() => {
+                    Setnote_babyethiandbokthitrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">노트_베이비에티&복티</Typography>
+                  <Typography align="center">
+                    {note_babyethiandbokthi}원
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/md/pouchbabyethibokthi.png"
+                  onClick={() => {
+                    Setpouch_babyethiandbokthitrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">파우치_베이비에티&복티</Typography>
+                  <Typography align="center">
+                    {pouch_babyethiandbokthi}원
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/md/removablestickerbabybokthi.png"
+                  onClick={() => {
+                    Setremovablesticker_babybokthitrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">
+                    리무버블스티커_베이비복티
+                  </Typography>
+                  <Typography align="center">
+                    {removablesticker_babybokthi}원
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
+          <Grid
+            container
+            direction={"row"}
+            spacing={0}
+            alignItems={"flex-start"}
+          >
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/md/removablestickerbabyethi.png"
+                  onClick={() => {
+                    Setremovablesticker_babyethitrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">
+                    리무버블스티커_베이비에티
+                  </Typography>
+                  <Typography align="center">
+                    {removablesticker_babyethi}원
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/md/removablestickerbabyethibokthi.png"
+                  onClick={() => {
+                    Setremovablesticker_babyethiandbokthitrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">
+                    리무버블스티커_베이비에티&복티
+                  </Typography>
+                  <Typography align="center">
+                    {removablesticker_babyethiandbokthi}원
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/md/reusabletumblerpink.png"
+                  onClick={() => {
+                    Setreusabletubler_pinktrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">리유저블텀블러(핑크)</Typography>
+                  <Typography align="center">
+                    {reusabletubler_pink}원
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/md/reusabletumblerwhite.png"
+                  onClick={() => {
+                    Setreusabletubler_whitetrue();
+
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">리유저블텀블러(화이트)</Typography>
+                  <Typography align="center">
+                    {reusabletubler_white}원
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
+          <Grid
+            container
+            direction={"row"}
+            spacing={0}
+            alignItems={"flex-start"}
+          >
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/md/smarttok_babyethi.png"
+                  onClick={() => {
+                    Setsmarttok_babyethitrue();
+                    optionaction();
+                  }}
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">스마트톡_베이비에티</Typography>
+                  <Typography align="center">{smarttok_babyethi}원</Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={3}>
+              <Card
+                raised
+                sx={{ margin: "0 auto", padding: "0px" }}
+                style={{
+                  width: "24vw",
+                  height: "23vh",
+                  borderRadius: "16px",
+                  marginTop: "20px",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image="menuimages/md/smarttokbabybokthi.png"
+                  onClick
+                  sx={{ padding: "0px", objectFit: "contain" }}
+                />
+                <CardContent sx={{ padding: "0px" }}>
+                  <Typography align="center">스마트톡_베이비복티</Typography>
+                  <Typography align="center">
+                    {smarttok_babybokthi}원
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
+        </div>
+      ) : (
+        <p></p>
+      )}
+    </div>
+  );
 }
 
 export default MenuSelecterMain;
