@@ -18,8 +18,8 @@ const Orderdata = create((set) => ({
 
   sum: 0,
   setsum: (input) => set({ sum: input }),
-  optionitem: 1,
-  setoptionitem: () => set({ optionitem: 1 }),
+  optionitem: 0,
+  setoptionitem: () => set({ optionitem: 0 }),
   increaseoptionitem: () =>
     set((state) => ({ optionitem: state.optionitem + 1 })),
   decreaseoptionitem: () =>
@@ -50,6 +50,15 @@ const Orderdata = create((set) => ({
 
   valueoflist: [],
   setvalueoflist: (input) => set({ valueoflist: input }),
+
+  onemenuflag: true,
+  onemenudisable: () => set({ onemenuflag: false }),
+  onemenuenable: () => set({ onemenuflag: true }),
+  coun: 0,
+  setcoun: (input) => set({ coun: input }),
+
+  phonenum: [],
+  setphonenum: (input) => set({ phonenum: input }),
 }));
 
 export const CustomOptions = Orderdata;

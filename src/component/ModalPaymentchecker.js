@@ -13,15 +13,14 @@ function ModalPaymentchecker() {
       <div>
         <Card
           raised
-          sx={{ margin: "0 auto", padding: "0px" }}
+          sx={{ margin: "0 auto", padding: "0vw" }}
           style={{
             width: "90vw",
-            height: "140vw",
-            borderRadius: "16px",
-            marginTop: "20px",
+            height: "45vh",
+            borderRadius: "1.17vw",
+            marginTop: "1.46vw",
           }}
         >
-          <Lister></Lister>
           <Button
             onClick={() => {
               hide();
@@ -35,12 +34,12 @@ function ModalPaymentchecker() {
               hide();
               show(
                 <div>
-                  <ModalGetNumber></ModalGetNumber>
+                  <ModalCompleted></ModalCompleted>
                 </div>
               );
             }}
           >
-            결제하기(카드)
+            카드를 끝까지 밀어넣어주세요.
           </Button>
         </Card>
       </div>

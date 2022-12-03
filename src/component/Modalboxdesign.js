@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { show, hide } from "react-functional-modal";
 import { MenuPriceStatus } from "./PriceStatus";
 import { OptionOfMenu } from "./OptionStatus";
+import Summer from "./Summer";
 import {
   Card,
   CardMedia,
@@ -849,9 +850,10 @@ function Modalboxdesign() {
     setcshowtype,
     valueoflist,
     setvalueoflist,
+    coun,
+    setcoun,
   } = CustomOptions();
-
-  useEffect(() => {
+  var source = useEffect(() => {
     if (istiramisu) {
       setmenutype(2);
       setmenuname("티라미수");
@@ -1788,6 +1790,10 @@ function Modalboxdesign() {
   }, []);
 
   var showtype = -1;
+  var width = "100vw";
+  var height = "100vh";
+  var left = "0vw";
+  var top = "0vh";
 
   //no option
   if (
@@ -1857,6 +1863,10 @@ function Modalboxdesign() {
     menuid === 1226
   ) {
     showtype = 1;
+    width = "80vw";
+    height = "30vh";
+    left = "10vw";
+    top = "25vh";
   }
   //온도 샷조절 얼음 물양 원두변경(200원) 헤이즐넛시럽추가 라떼로 변경(우유) 라떼로 변경(두유) 시나몬시럽추가
   else if (
@@ -1869,42 +1879,82 @@ function Modalboxdesign() {
     menuid === 37
   ) {
     showtype = 2;
+    width = "80vw";
+    height = "60vh";
+    left = "10vw";
+    top = "20vh";
   }
   //온도 샷조절 얼음 물양 헤이즐넛시럽추가 시나몬시럽추가
   else if (menuid === 41 || menuid === 51) {
     showtype = 3;
+    width = "80vw";
+    height = "60vh";
+    left = "10vw";
+    top = "20vh";
   }
   //테이크아웃전용 샷양  물양 원두변경(400원)
   else if (menuid === 42 || menuid === 52) {
     showtype = 4;
+    width = "80vw";
+    height = "60vh";
+    left = "10vw";
+    top = "20vh";
   }
   //온도 샷조절 얼음 원두변경(200원) 두유로변경 헤이즐넛시럽추가 시나몬시럽추가
   else if (menuid === 43 || menuid === 53) {
     showtype = 5;
+    width = "80vw";
+    height = "60vh";
+    left = "10vw";
+    top = "20vh";
   }
   //온도 얼음 원두변경(200원) 당도 두유로변경 샷추가 휘핑추가
   else if (menuid === 44 || menuid === 54 || menuid === 46 || menuid === 55) {
     showtype = 6;
+    width = "80vw";
+    height = "60vh";
+    left = "10vw";
+    top = "20vh";
   }
   //iced only 얼음 물양 헤이즐넛시럽추가 시나몬시럽추가
   else if (menuid === 45) {
     showtype = 7;
+    width = "80vw";
+    height = "60vh";
+    left = "10vw";
+    top = "20vh";
   }
   //iced only 샷양 얼음 원두변경(200원) 휘핑추가 헤이즐넛시럽추가 시나몬시럽추가
   else if (menuid === 47 || menuid === 56) {
     showtype = 8;
+    width = "80vw";
+    height = "60vh";
+    left = "10vw";
+    top = "20vh";
   }
   //iced only 당도 두유로변경 휘핑추가
   else if (menuid === 48) {
     showtype = 9;
+    width = "80vw";
+    height = "60vh";
+    left = "10vw";
+    top = "20vh";
   }
   //hot only 원두변경(200원) 샷추가
   else if (menuid === 49 || menuid === 57) {
     showtype = 10;
+    width = "80vw";
+    height = "60vh";
+    left = "10vw";
+    top = "20vh";
   }
   //온도 샷조절 얼음 물양 원두변경(200원) 당도
   else if (menuid === 410 || menuid === 58) {
     showtype = 11;
+    width = "80vw";
+    height = "60vh";
+    left = "10vw";
+    top = "20vh";
   }
   //온도 얼음 원두변경 당도 두유로변경 샷추가 휘핑추가
   else if (
@@ -1916,62 +1966,122 @@ function Modalboxdesign() {
     menuid === 511
   ) {
     showtype = 12;
+    width = "80vw";
+    height = "60vh";
+    left = "10vw";
+    top = "20vh";
   }
   //온도 샷조절 얼음 물양 헤이즐넛시럽추가 시나몬시럽추가
   else if (menuid === 413) {
     showtype = 13;
+    width = "80vw";
+    height = "60vh";
+    left = "10vw";
+    top = "20vh";
   }
   //iced only 얼음 물양 헤이즐넛시럽추가 시나몬시럽추가
   else if (menuid === 414) {
     showtype = 14;
+    width = "80vw";
+    height = "60vh";
+    left = "10vw";
+    top = "20vh";
   }
   //iced only 당도 두유로변경 휘핑추가
   else if (menuid === 415) {
     showtype = 15;
+    width = "80vw";
+    height = "60vh";
+    left = "10vw";
+    top = "20vh";
   }
   //iced only 얼음 당도 두유로변경 샷추가
   else if (menuid === 61 || menuid === 62) {
     showtype = 16;
+    width = "80vw";
+    height = "60vh";
+    left = "10vw";
+    top = "20vh";
   }
   //온도 두유로변경
   else if (menuid === 63 || menuid === 64) {
     showtype = 17;
+    width = "80vw";
+    height = "60vh";
+    left = "10vw";
+    top = "20vh";
   }
   //온도 당도 두유로변경 샷추가 달고나추가
   else if (menuid === 65) {
     showtype = 18;
+    width = "80vw";
+    height = "60vh";
+    left = "10vw";
+    top = "20vh";
   }
   //iced only 얼음 당도 두유로변경 샷추가
   else if (menuid === 66) {
     showtype = 19;
+    width = "80vw";
+    height = "60vh";
+    left = "10vw";
+    top = "20vh";
   }
   //온도 얼음 당도 두유로변경 샷추가
   else if (menuid === 67) {
     showtype = 20;
+    width = "80vw";
+    height = "60vh";
+    left = "10vw";
+    top = "20vh";
   }
   //온도 얼음 당도 두유로변경 샷추가 휘핑추가
   else if (menuid === 68 || menuid === 69 || menuid === 611 || menuid === 612) {
     showtype = 21;
+    width = "80vw";
+    height = "60vh";
+    left = "10vw";
+    top = "20vh";
   }
   //온도 얼음 당도 두유로변경 휘핑추가
   else if (menuid === 610) {
     showtype = 22;
+    width = "80vw";
+    height = "60vh";
+    left = "10vw";
+    top = "20vh";
   }
   //iced only 당도
   else if (menuid === 613 || menuid === 73 || menuid === 78) {
     showtype = 23;
+    width = "80vw";
+    height = "60vh";
+    left = "10vw";
+    top = "20vh";
   }
   //온도조절 두유로변경
   else if (menuid === 614) {
     showtype = 24;
+    width = "80vw";
+    height = "60vh";
+    left = "10vw";
+    top = "20vh";
   }
   //iced only 얼음 당도 두유로변경 휘핑추가
   else if (menuid === 615) {
     showtype = 25;
+    width = "80vw";
+    height = "60vh";
+    left = "10vw";
+    top = "20vh";
   }
   //온도조절 당도 두유로변경 토핑제외 샷추가 휘핑추가
   else if (menuid === 616) {
     showtype = 26;
+    width = "80vw";
+    height = "60vh";
+    left = "10vw";
+    top = "20vh";
   }
   //iced only
   else if (
@@ -1989,18 +2099,34 @@ function Modalboxdesign() {
     menuid === 811
   ) {
     showtype = 27;
+    width = "80vw";
+    height = "60vh";
+    left = "10vw";
+    top = "20vh";
   }
   //iced only 당도 시럽제외
   else if (menuid === 712) {
     showtype = 28;
+    width = "80vw";
+    height = "60vh";
+    left = "10vw";
+    top = "20vh";
   }
   //iced only 휘핑 샷추가
   else if (menuid === 82 || menuid === 83 || menuid === 84) {
     showtype = 29;
+    width = "80vw";
+    height = "60vh";
+    left = "10vw";
+    top = "20vh";
   }
   //iced only 휘핑 두유로변경 샷추가
   else if (menuid === 88) {
     showtype = 30;
+    width = "80vw";
+    height = "60vh";
+    left = "10vw";
+    top = "20vh";
   }
   //온도조절 당도
   else if (
@@ -2013,6 +2139,10 @@ function Modalboxdesign() {
     menuid === 919
   ) {
     showtype = 31;
+    width = "80vw";
+    height = "60vh";
+    left = "10vw";
+    top = "20vh";
   }
   //온도조절 얼음
   else if (
@@ -2024,45 +2154,169 @@ function Modalboxdesign() {
     menuid === 920
   ) {
     showtype = 32;
+    width = "80vw";
+    height = "60vh";
+    left = "10vw";
+    top = "20vh";
   }
   //iced only 얼음 당도
   else if (menuid === 96 || menuid === 98 || menuid === 914) {
     showtype = 33;
+    width = "80vw";
+    height = "60vh";
+    left = "10vw";
+    top = "20vh";
   }
   //온도조절 얼음 당도
   else if (menuid === 910 || menuid === 911) {
     showtype = 34;
+    width = "80vw";
+    height = "60vh";
+    left = "10vw";
+    top = "20vh";
   }
   //iced only 얼음 과육제외 샷추가
   else if (menuid === 917) {
     showtype = 35;
+    width = "80vw";
+    height = "60vh";
+    left = "10vw";
+    top = "20vh";
   }
   //iced only 얼음 덜달게
   else if (menuid === 918) {
     showtype = 36;
+    width = "80vw";
+    height = "60vh";
+    left = "10vw";
+    top = "20vh";
   } else {
     showtype = -1;
+    width = "80vw";
+    height = "60vh";
+    left = "10vw";
+    top = "20vh";
   }
+  var back = "#FFEEEE";
   var showoption = [];
+  if (menutype == 1) {
+    var upper = "SUGGEST";
+    var lower = "suggest";
+  } else if (menutype == 2) {
+    var upper = "CAKE";
+    var lower = "cake";
+  } else if (menutype == 3) {
+    var upper = "newmenu";
+    var lower = "NEWMENU";
+  } else if (menutype == 4) {
+    var upper = "SETMENU";
+    var lower = "setmenu";
+  } else if (menutype == 5) {
+    var upper = "COFFEE";
+    var lower = "coffee";
+  } else if (menutype == 6) {
+    var upper = "DECAF";
+    var lower = "decaf";
+  } else if (menutype == 7) {
+    var upper = "MILKTEA&LATTE";
+    var lower = "milktea_latte";
+  } else if (menutype == 8) {
+    var upper = "JUICE&DRINK";
+    var lower = "juicedrink";
+  } else if (menutype == 9) {
+    var upper = "smoothie";
+    var lower = "SMOOTHIE";
+  } else if (menutype == 10) {
+    var upper = "TEA&ADE";
+    var lower = "tea_ade";
+  } else if (menutype == 11) {
+    var upper = "BREAD";
+    var lower = "bread";
+  } else if (menutype == 12) {
+    var upper = "DESSERT";
+    var lower = "dessert";
+  } else if (menutype == 13) {
+    var upper = "MD";
+    var lower = "md";
+  } else;
+
   if (showtype === 1) {
     //////////////no option//////////////////
+    back = "#FFFFFF";
+    var temsrc = "all";
+    temsrc = temsrc.concat("", "/");
+    temsrc = temsrc.concat("", menuname);
+    temsrc = temsrc.concat("", ".png");
     showoption.push(
-      <div>
-        <Button
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignContent: "center",
+          justifyContent: "center",
+          top: 0,
+        }}
+      >
+        <Typography
+          style={{
+            background: "##F5F5F5",
+            position: "absolute",
+            fontFamily: "Inter",
+            fontStyle: "Regular",
+            fontWeight: 400,
+            fontSize: "1rem",
+            textAlign: "center",
+            boxShadow: "0vw 0vw red",
+            margin: "20vw 0px 0px 10px",
+            width: "10vw",
+            height: "6vw",
+            right: "20vw",
+            margin: "25vw 0px 0px 0px",
+            zIndex: 1,
+          }}
+        >
+          {optionitem}
+        </Typography>
+
+        <img
           onClick={() => {
             increaseoptionitem();
           }}
-        >
-          +
-        </Button>
-        <Typography align="left">{optionitem}</Typography>
-        <Button
+          src="images/hotplus.png"
+          style={{
+            position: "absolute",
+            width: "6vw",
+            height: "6vw",
+            right: "15vw",
+            margin: "25vw 0px 0px 10px",
+            zIndex: 1,
+          }}
+        ></img>
+        <img
           onClick={() => {
             decreaseoptionitem();
           }}
-        >
-          -
-        </Button>
+          src="images/hotminus.png"
+          style={{
+            position: "absolute",
+            width: "6vw",
+            height: "6vw",
+            right: "29vw",
+            margin: "25vw 0px 0px 0px",
+            zIndex: 1,
+          }}
+        ></img>
+
+        <img
+          src={temsrc}
+          style={{
+            position: "absolute",
+            width: "25vw",
+            height: "25vw",
+            left: "10vw",
+            margin: "25vw 0px 0px 10px",
+          }}
+        ></img>
       </div>
     );
   } else if (showtype === 2) {
@@ -2070,6 +2324,13 @@ function Modalboxdesign() {
     showoption.push(
       <div>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "20.94vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             increaseoptionhot();
             setcshowtype(showtype);
@@ -2077,8 +2338,26 @@ function Modalboxdesign() {
         >
           +
         </Button>
-        <Typography align="left">HOT : {optionhot}</Typography>
+        <Typography
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "13.18vw",
+            top: "28.4vw",
+          }}
+          align="left"
+        >
+          HOT : {optionhot}
+        </Typography>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "5.78vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             decreaseoptionhot();
             setcshowtype(showtype);
@@ -2088,6 +2367,13 @@ function Modalboxdesign() {
         </Button>
         <div></div>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "45.83vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             increaseoptioniced();
             setcshowtype(showtype);
@@ -2095,8 +2381,26 @@ function Modalboxdesign() {
         >
           +
         </Button>
-        <Typography align="left">ICED : {optioniced}</Typography>
+        <Typography
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "37.26vw",
+            top: "28.4vw",
+          }}
+          align="left"
+        >
+          ICED : {optioniced}
+        </Typography>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "29.94vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             decreaseoptioniced();
             setcshowtype(showtype);
@@ -2111,6 +2415,13 @@ function Modalboxdesign() {
     showoption.push(
       <div>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "20.94vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             increaseoptionhot();
             setcshowtype(showtype);
@@ -2118,8 +2429,26 @@ function Modalboxdesign() {
         >
           +
         </Button>
-        <Typography align="left">HOT : {optionhot}</Typography>
+        <Typography
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "13.18vw",
+            top: "28.4vw",
+          }}
+          align="left"
+        >
+          HOT : {optionhot}
+        </Typography>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "8.71vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             decreaseoptionhot();
             setcshowtype(showtype);
@@ -2129,6 +2458,13 @@ function Modalboxdesign() {
         </Button>
         <div></div>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "45.83vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             increaseoptioniced();
             setcshowtype(showtype);
@@ -2136,8 +2472,26 @@ function Modalboxdesign() {
         >
           +
         </Button>
-        <Typography align="left">ICED : {optioniced}</Typography>
+        <Typography
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "37.26vw",
+            top: "28.4vw",
+          }}
+          align="left"
+        >
+          ICED : {optioniced}
+        </Typography>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "29.94vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             decreaseoptioniced();
             setcshowtype(showtype);
@@ -2152,6 +2506,13 @@ function Modalboxdesign() {
     showoption.push(
       <div>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "45.83vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             increaseoptioniced();
             setcshowtype(showtype);
@@ -2159,8 +2520,26 @@ function Modalboxdesign() {
         >
           +
         </Button>
-        <Typography align="left">ICED : {optioniced}</Typography>
+        <Typography
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "37.26vw",
+            top: "28.4vw",
+          }}
+          align="left"
+        >
+          ICED : {optioniced}
+        </Typography>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "29.94vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             decreaseoptioniced();
             setcshowtype(showtype);
@@ -2175,6 +2554,13 @@ function Modalboxdesign() {
     showoption.push(
       <div>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "20.94vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             increaseoptionhot();
             setcshowtype(showtype);
@@ -2182,8 +2568,26 @@ function Modalboxdesign() {
         >
           +
         </Button>
-        <Typography align="left">HOT : {optionhot}</Typography>
+        <Typography
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "13.18vw",
+            top: "28.4vw",
+          }}
+          align="left"
+        >
+          HOT : {optionhot}
+        </Typography>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "5.78vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             decreaseoptionhot();
             setcshowtype(showtype);
@@ -2193,6 +2597,13 @@ function Modalboxdesign() {
         </Button>
         <div></div>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "45.83vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             increaseoptioniced();
             setcshowtype(showtype);
@@ -2200,8 +2611,26 @@ function Modalboxdesign() {
         >
           +
         </Button>
-        <Typography align="left">ICED : {optioniced}</Typography>
+        <Typography
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "37.26vw",
+            top: "28.4vw",
+          }}
+          align="left"
+        >
+          ICED : {optioniced}
+        </Typography>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "29.94vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             decreaseoptioniced();
             setcshowtype(showtype);
@@ -2216,6 +2645,13 @@ function Modalboxdesign() {
     showoption.push(
       <div>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "20.94vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             increaseoptionhot();
             setcshowtype(showtype);
@@ -2223,8 +2659,26 @@ function Modalboxdesign() {
         >
           +
         </Button>
-        <Typography align="left">HOT : {optionhot}</Typography>
+        <Typography
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "13.18vw",
+            top: "28.4vw",
+          }}
+          align="left"
+        >
+          HOT : {optionhot}
+        </Typography>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "5.78vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             decreaseoptionhot();
             setcshowtype(showtype);
@@ -2234,6 +2688,13 @@ function Modalboxdesign() {
         </Button>
         <div></div>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "45.83vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             increaseoptioniced();
             setcshowtype(showtype);
@@ -2241,8 +2702,26 @@ function Modalboxdesign() {
         >
           +
         </Button>
-        <Typography align="left">ICED : {optioniced}</Typography>
+        <Typography
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "37.26vw",
+            top: "28.4vw",
+          }}
+          align="left"
+        >
+          ICED : {optioniced}
+        </Typography>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "29.94vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             decreaseoptioniced();
             setcshowtype(showtype);
@@ -2257,6 +2736,13 @@ function Modalboxdesign() {
     showoption.push(
       <div>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "45.83vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             increaseoptioniced();
             setcshowtype(showtype);
@@ -2264,8 +2750,26 @@ function Modalboxdesign() {
         >
           +
         </Button>
-        <Typography align="left">ICED : {optioniced}</Typography>
+        <Typography
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "37.26vw",
+            top: "28.4vw",
+          }}
+          align="left"
+        >
+          ICED : {optioniced}
+        </Typography>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "29.94vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             decreaseoptioniced();
             setcshowtype(showtype);
@@ -2280,6 +2784,13 @@ function Modalboxdesign() {
     showoption.push(
       <div>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "45.83vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             increaseoptioniced();
             setcshowtype(showtype);
@@ -2287,8 +2798,26 @@ function Modalboxdesign() {
         >
           +
         </Button>
-        <Typography align="left">ICED : {optioniced}</Typography>
+        <Typography
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "37.26vw",
+            top: "28.4vw",
+          }}
+          align="left"
+        >
+          ICED : {optioniced}
+        </Typography>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "29.94vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             decreaseoptioniced();
             setcshowtype(showtype);
@@ -2303,6 +2832,13 @@ function Modalboxdesign() {
     showoption.push(
       <div>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "45.83vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             increaseoptioniced();
             setcshowtype(showtype);
@@ -2310,8 +2846,26 @@ function Modalboxdesign() {
         >
           +
         </Button>
-        <Typography align="left">ICED : {optioniced}</Typography>
+        <Typography
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "37.26vw",
+            top: "28.4vw",
+          }}
+          align="left"
+        >
+          ICED : {optioniced}
+        </Typography>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "29.94vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             decreaseoptioniced();
             setcshowtype(showtype);
@@ -2326,6 +2880,13 @@ function Modalboxdesign() {
     showoption.push(
       <div>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "20.94vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             increaseoptionhot();
             setcshowtype(showtype);
@@ -2333,8 +2894,26 @@ function Modalboxdesign() {
         >
           +
         </Button>
-        <Typography align="left">HOT : {optionhot}</Typography>
+        <Typography
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "13.18vw",
+            top: "28.4vw",
+          }}
+          align="left"
+        >
+          HOT : {optionhot}
+        </Typography>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "5.78vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             decreaseoptionhot();
             setcshowtype(showtype);
@@ -2346,12 +2925,17 @@ function Modalboxdesign() {
     );
   } else if (showtype === 11) {
     //온도 샷조절 얼음 물양 원두변경(200원) 당도
-    showoption.push(<div> </div>);
-  } else if (showtype === 12) {
-    //온도 얼음 원두변경 당도 두유로변경 샷추가 휘핑추가
+    //hot only 원두변경(200원) 샷추가
     showoption.push(
       <div>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "20.94vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             increaseoptionhot();
             setcshowtype(showtype);
@@ -2359,8 +2943,74 @@ function Modalboxdesign() {
         >
           +
         </Button>
-        <Typography align="left">HOT : {optionhot}</Typography>
+        <Typography
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "13.18vw",
+            top: "28.4vw",
+          }}
+          align="left"
+        >
+          HOT : {optionhot}
+        </Typography>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "5.78vw",
+            top: "28.4vw",
+          }}
+          onClick={() => {
+            decreaseoptionhot();
+            setcshowtype(showtype);
+          }}
+        >
+          -
+        </Button>
+      </div>
+    );
+  } else if (showtype === 12) {
+    //온도 얼음 원두변경 당도 두유로변경 샷추가 휘핑추가
+    showoption.push(
+      <div>
+        <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "20.94vw",
+            top: "28.4vw",
+          }}
+          onClick={() => {
+            increaseoptionhot();
+            setcshowtype(showtype);
+          }}
+        >
+          +
+        </Button>
+        <Typography
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "13.18vw",
+            top: "28.4vw",
+          }}
+          align="left"
+        >
+          HOT : {optionhot}
+        </Typography>
+        <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "5.78vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             decreaseoptionhot();
             setcshowtype(showtype);
@@ -2370,6 +3020,13 @@ function Modalboxdesign() {
         </Button>
         <div></div>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "45.83vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             increaseoptioniced();
             setcshowtype(showtype);
@@ -2377,8 +3034,26 @@ function Modalboxdesign() {
         >
           +
         </Button>
-        <Typography align="left">ICED : {optioniced}</Typography>
+        <Typography
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "37.26vw",
+            top: "28.4vw",
+          }}
+          align="left"
+        >
+          ICED : {optioniced}
+        </Typography>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "29.94vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             decreaseoptioniced();
             setcshowtype(showtype);
@@ -2393,6 +3068,13 @@ function Modalboxdesign() {
     showoption.push(
       <div>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "20.94vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             increaseoptionhot();
             setcshowtype(showtype);
@@ -2400,8 +3082,26 @@ function Modalboxdesign() {
         >
           +
         </Button>
-        <Typography align="left">HOT : {optionhot}</Typography>
+        <Typography
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "13.18vw",
+            top: "28.4vw",
+          }}
+          align="left"
+        >
+          HOT : {optionhot}
+        </Typography>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "5.78vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             decreaseoptionhot();
             setcshowtype(showtype);
@@ -2411,6 +3111,13 @@ function Modalboxdesign() {
         </Button>
         <div></div>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "45.83vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             increaseoptioniced();
             setcshowtype(showtype);
@@ -2418,8 +3125,26 @@ function Modalboxdesign() {
         >
           +
         </Button>
-        <Typography align="left">ICED : {optioniced}</Typography>
+        <Typography
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "37.26vw",
+            top: "28.4vw",
+          }}
+          align="left"
+        >
+          ICED : {optioniced}
+        </Typography>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "29.94vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             decreaseoptioniced();
             setcshowtype(showtype);
@@ -2434,6 +3159,13 @@ function Modalboxdesign() {
     showoption.push(
       <div>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "45.83vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             increaseoptioniced();
             setcshowtype(showtype);
@@ -2441,8 +3173,26 @@ function Modalboxdesign() {
         >
           +
         </Button>
-        <Typography align="left">ICED : {optioniced}</Typography>
+        <Typography
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "37.26vw",
+            top: "28.4vw",
+          }}
+          align="left"
+        >
+          ICED : {optioniced}
+        </Typography>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "29.94vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             decreaseoptioniced();
             setcshowtype(showtype);
@@ -2457,6 +3207,13 @@ function Modalboxdesign() {
     showoption.push(
       <div>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "45.83vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             increaseoptioniced();
             setcshowtype(showtype);
@@ -2464,8 +3221,26 @@ function Modalboxdesign() {
         >
           +
         </Button>
-        <Typography align="left">ICED : {optioniced}</Typography>
+        <Typography
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "37.26vw",
+            top: "28.4vw",
+          }}
+          align="left"
+        >
+          ICED : {optioniced}
+        </Typography>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "29.94vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             decreaseoptioniced();
             setcshowtype(showtype);
@@ -2480,6 +3255,13 @@ function Modalboxdesign() {
     showoption.push(
       <div>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "45.83vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             increaseoptioniced();
             setcshowtype(showtype);
@@ -2487,8 +3269,26 @@ function Modalboxdesign() {
         >
           +
         </Button>
-        <Typography align="left">ICED : {optioniced}</Typography>
+        <Typography
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "37.26vw",
+            top: "28.4vw",
+          }}
+          align="left"
+        >
+          ICED : {optioniced}
+        </Typography>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "29.94vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             decreaseoptioniced();
             setcshowtype(showtype);
@@ -2503,6 +3303,13 @@ function Modalboxdesign() {
     showoption.push(
       <div>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "20.94vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             increaseoptionhot();
             setcshowtype(showtype);
@@ -2510,8 +3317,26 @@ function Modalboxdesign() {
         >
           +
         </Button>
-        <Typography align="left">HOT : {optionhot}</Typography>
+        <Typography
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "13.18vw",
+            top: "28.4vw",
+          }}
+          align="left"
+        >
+          HOT : {optionhot}
+        </Typography>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "5.78vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             decreaseoptionhot();
             setcshowtype(showtype);
@@ -2521,6 +3346,13 @@ function Modalboxdesign() {
         </Button>
         <div></div>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "45.83vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             increaseoptioniced();
             setcshowtype(showtype);
@@ -2528,8 +3360,26 @@ function Modalboxdesign() {
         >
           +
         </Button>
-        <Typography align="left">ICED : {optioniced}</Typography>
+        <Typography
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "37.26vw",
+            top: "28.4vw",
+          }}
+          align="left"
+        >
+          ICED : {optioniced}
+        </Typography>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "29.94vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             decreaseoptioniced();
             setcshowtype(showtype);
@@ -2544,6 +3394,13 @@ function Modalboxdesign() {
     showoption.push(
       <div>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "20.94vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             increaseoptionhot();
             setcshowtype(showtype);
@@ -2551,8 +3408,26 @@ function Modalboxdesign() {
         >
           +
         </Button>
-        <Typography align="left">HOT : {optionhot}</Typography>
+        <Typography
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "13.18vw",
+            top: "28.4vw",
+          }}
+          align="left"
+        >
+          HOT : {optionhot}
+        </Typography>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "5.78vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             decreaseoptionhot();
             setcshowtype(showtype);
@@ -2562,6 +3437,13 @@ function Modalboxdesign() {
         </Button>
         <div></div>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "45.83vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             increaseoptioniced();
             setcshowtype(showtype);
@@ -2569,8 +3451,26 @@ function Modalboxdesign() {
         >
           +
         </Button>
-        <Typography align="left">ICED : {optioniced}</Typography>
+        <Typography
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "37.26vw",
+            top: "28.4vw",
+          }}
+          align="left"
+        >
+          ICED : {optioniced}
+        </Typography>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "29.94vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             decreaseoptioniced();
             setcshowtype(showtype);
@@ -2585,6 +3485,13 @@ function Modalboxdesign() {
     showoption.push(
       <div>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "45.83vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             increaseoptioniced();
             setcshowtype(showtype);
@@ -2592,8 +3499,26 @@ function Modalboxdesign() {
         >
           +
         </Button>
-        <Typography align="left">ICED : {optioniced}</Typography>
+        <Typography
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "37.26vw",
+            top: "28.4vw",
+          }}
+          align="left"
+        >
+          ICED : {optioniced}
+        </Typography>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "29.94vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             decreaseoptioniced();
             setcshowtype(showtype);
@@ -2608,6 +3533,13 @@ function Modalboxdesign() {
     showoption.push(
       <div>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "20.94vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             increaseoptionhot();
             setcshowtype(showtype);
@@ -2615,8 +3547,26 @@ function Modalboxdesign() {
         >
           +
         </Button>
-        <Typography align="left">HOT : {optionhot}</Typography>
+        <Typography
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "13.18vw",
+            top: "28.4vw",
+          }}
+          align="left"
+        >
+          HOT : {optionhot}
+        </Typography>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "5.78vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             decreaseoptionhot();
             setcshowtype(showtype);
@@ -2626,6 +3576,13 @@ function Modalboxdesign() {
         </Button>
         <div></div>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "45.83vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             increaseoptioniced();
             setcshowtype(showtype);
@@ -2633,8 +3590,26 @@ function Modalboxdesign() {
         >
           +
         </Button>
-        <Typography align="left">ICED : {optioniced}</Typography>
+        <Typography
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "37.26vw",
+            top: "28.4vw",
+          }}
+          align="left"
+        >
+          ICED : {optioniced}
+        </Typography>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "29.94vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             decreaseoptioniced();
             setcshowtype(showtype);
@@ -2649,6 +3624,13 @@ function Modalboxdesign() {
     showoption.push(
       <div>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "20.94vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             increaseoptionhot();
             setcshowtype(showtype);
@@ -2656,8 +3638,26 @@ function Modalboxdesign() {
         >
           +
         </Button>
-        <Typography align="left">HOT : {optionhot}</Typography>
+        <Typography
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "13.18vw",
+            top: "28.4vw",
+          }}
+          align="left"
+        >
+          HOT : {optionhot}
+        </Typography>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "5.78vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             decreaseoptionhot();
             setcshowtype(showtype);
@@ -2667,6 +3667,13 @@ function Modalboxdesign() {
         </Button>
         <div></div>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "45.83vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             increaseoptioniced();
             setcshowtype(showtype);
@@ -2674,8 +3681,26 @@ function Modalboxdesign() {
         >
           +
         </Button>
-        <Typography align="left">ICED : {optioniced}</Typography>
+        <Typography
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "37.26vw",
+            top: "28.4vw",
+          }}
+          align="left"
+        >
+          ICED : {optioniced}
+        </Typography>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "29.94vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             decreaseoptioniced();
             setcshowtype(showtype);
@@ -2690,6 +3715,13 @@ function Modalboxdesign() {
     showoption.push(
       <div>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "20.94vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             increaseoptionhot();
             setcshowtype(showtype);
@@ -2697,8 +3729,26 @@ function Modalboxdesign() {
         >
           +
         </Button>
-        <Typography align="left">HOT : {optionhot}</Typography>
+        <Typography
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "13.18vw",
+            top: "28.4vw",
+          }}
+          align="left"
+        >
+          HOT : {optionhot}
+        </Typography>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "5.78vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             decreaseoptionhot();
             setcshowtype(showtype);
@@ -2708,6 +3758,13 @@ function Modalboxdesign() {
         </Button>
         <div></div>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "45.83vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             increaseoptioniced();
             setcshowtype(showtype);
@@ -2715,8 +3772,26 @@ function Modalboxdesign() {
         >
           +
         </Button>
-        <Typography align="left">ICED : {optioniced}</Typography>
+        <Typography
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "37.26vw",
+            top: "28.4vw",
+          }}
+          align="left"
+        >
+          ICED : {optioniced}
+        </Typography>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "29.94vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             decreaseoptioniced();
             setcshowtype(showtype);
@@ -2731,6 +3806,13 @@ function Modalboxdesign() {
     showoption.push(
       <div>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "45.83vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             increaseoptioniced();
             setcshowtype(showtype);
@@ -2738,8 +3820,26 @@ function Modalboxdesign() {
         >
           +
         </Button>
-        <Typography align="left">ICED : {optioniced}</Typography>
+        <Typography
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "37.26vw",
+            top: "28.4vw",
+          }}
+          align="left"
+        >
+          ICED : {optioniced}
+        </Typography>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "29.94vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             decreaseoptioniced();
             setcshowtype(showtype);
@@ -2754,6 +3854,13 @@ function Modalboxdesign() {
     showoption.push(
       <div>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "20.94vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             increaseoptionhot();
             setcshowtype(showtype);
@@ -2761,8 +3868,26 @@ function Modalboxdesign() {
         >
           +
         </Button>
-        <Typography align="left">HOT : {optionhot}</Typography>
+        <Typography
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "13.18vw",
+            top: "28.4vw",
+          }}
+          align="left"
+        >
+          HOT : {optionhot}
+        </Typography>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "5.78vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             decreaseoptionhot();
             setcshowtype(showtype);
@@ -2772,6 +3897,13 @@ function Modalboxdesign() {
         </Button>
         <div></div>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "45.83vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             increaseoptioniced();
             setcshowtype(showtype);
@@ -2779,8 +3911,26 @@ function Modalboxdesign() {
         >
           +
         </Button>
-        <Typography align="left">ICED : {optioniced}</Typography>
+        <Typography
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "37.26vw",
+            top: "28.4vw",
+          }}
+          align="left"
+        >
+          ICED : {optioniced}
+        </Typography>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "29.94vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             decreaseoptioniced();
             setcshowtype(showtype);
@@ -2795,6 +3945,13 @@ function Modalboxdesign() {
     showoption.push(
       <div>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "45.83vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             increaseoptioniced();
             setcshowtype(showtype);
@@ -2802,8 +3959,26 @@ function Modalboxdesign() {
         >
           +
         </Button>
-        <Typography align="left">ICED : {optioniced}</Typography>
+        <Typography
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "37.26vw",
+            top: "28.4vw",
+          }}
+          align="left"
+        >
+          ICED : {optioniced}
+        </Typography>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "29.94vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             decreaseoptioniced();
             setcshowtype(showtype);
@@ -2818,6 +3993,13 @@ function Modalboxdesign() {
     showoption.push(
       <div>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "20.94vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             increaseoptionhot();
             setcshowtype(showtype);
@@ -2825,8 +4007,26 @@ function Modalboxdesign() {
         >
           +
         </Button>
-        <Typography align="left">HOT : {optionhot}</Typography>
+        <Typography
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "13.18vw",
+            top: "28.4vw",
+          }}
+          align="left"
+        >
+          HOT : {optionhot}
+        </Typography>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "5.78vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             decreaseoptionhot();
             setcshowtype(showtype);
@@ -2836,6 +4036,13 @@ function Modalboxdesign() {
         </Button>
         <div></div>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "45.83vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             increaseoptioniced();
             setcshowtype(showtype);
@@ -2843,8 +4050,26 @@ function Modalboxdesign() {
         >
           +
         </Button>
-        <Typography align="left">ICED : {optioniced}</Typography>
+        <Typography
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "37.26vw",
+            top: "28.4vw",
+          }}
+          align="left"
+        >
+          ICED : {optioniced}
+        </Typography>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "29.94vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             decreaseoptioniced();
             setcshowtype(showtype);
@@ -2859,6 +4084,13 @@ function Modalboxdesign() {
     showoption.push(
       <div>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "45.83vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             increaseoptioniced();
             setcshowtype(showtype);
@@ -2866,8 +4098,26 @@ function Modalboxdesign() {
         >
           +
         </Button>
-        <Typography align="left">ICED : {optioniced}</Typography>
+        <Typography
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "37.26vw",
+            top: "28.4vw",
+          }}
+          align="left"
+        >
+          ICED : {optioniced}
+        </Typography>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "29.94vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             decreaseoptioniced();
             setcshowtype(showtype);
@@ -2882,6 +4132,13 @@ function Modalboxdesign() {
     showoption.push(
       <div>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "45.83vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             increaseoptioniced();
             setcshowtype(showtype);
@@ -2889,8 +4146,26 @@ function Modalboxdesign() {
         >
           +
         </Button>
-        <Typography align="left">ICED : {optioniced}</Typography>
+        <Typography
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "37.26vw",
+            top: "28.4vw",
+          }}
+          align="left"
+        >
+          ICED : {optioniced}
+        </Typography>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "29.94vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             decreaseoptioniced();
             setcshowtype(showtype);
@@ -2905,6 +4180,13 @@ function Modalboxdesign() {
     showoption.push(
       <div>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "45.83vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             increaseoptioniced();
             setcshowtype(showtype);
@@ -2912,8 +4194,26 @@ function Modalboxdesign() {
         >
           +
         </Button>
-        <Typography align="left">ICED : {optioniced}</Typography>
+        <Typography
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "37.26vw",
+            top: "28.4vw",
+          }}
+          align="left"
+        >
+          ICED : {optioniced}
+        </Typography>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "29.94vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             decreaseoptioniced();
             setcshowtype(showtype);
@@ -2928,6 +4228,13 @@ function Modalboxdesign() {
     showoption.push(
       <div>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "45.83vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             increaseoptioniced();
             setcshowtype(showtype);
@@ -2935,8 +4242,26 @@ function Modalboxdesign() {
         >
           +
         </Button>
-        <Typography align="left">ICED : {optioniced}</Typography>
+        <Typography
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "37.26vw",
+            top: "28.4vw",
+          }}
+          align="left"
+        >
+          ICED : {optioniced}
+        </Typography>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "29.94vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             decreaseoptioniced();
             setcshowtype(showtype);
@@ -2951,6 +4276,13 @@ function Modalboxdesign() {
     showoption.push(
       <div>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "20.94vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             increaseoptionhot();
             setcshowtype(showtype);
@@ -2958,8 +4290,26 @@ function Modalboxdesign() {
         >
           +
         </Button>
-        <Typography align="left">HOT : {optionhot}</Typography>
+        <Typography
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "13.18vw",
+            top: "28.4vw",
+          }}
+          align="left"
+        >
+          HOT : {optionhot}
+        </Typography>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "5.78vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             decreaseoptionhot();
             setcshowtype(showtype);
@@ -2969,6 +4319,13 @@ function Modalboxdesign() {
         </Button>
         <div></div>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "45.83vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             increaseoptioniced();
             setcshowtype(showtype);
@@ -2976,8 +4333,26 @@ function Modalboxdesign() {
         >
           +
         </Button>
-        <Typography align="left">ICED : {optioniced}</Typography>
+        <Typography
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "37.26vw",
+            top: "28.4vw",
+          }}
+          align="left"
+        >
+          ICED : {optioniced}
+        </Typography>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "29.94vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             decreaseoptioniced();
             setcshowtype(showtype);
@@ -2992,6 +4367,13 @@ function Modalboxdesign() {
     showoption.push(
       <div>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "20.94vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             increaseoptionhot();
             setcshowtype(showtype);
@@ -2999,8 +4381,26 @@ function Modalboxdesign() {
         >
           +
         </Button>
-        <Typography align="left">HOT : {optionhot}</Typography>
+        <Typography
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "13.18vw",
+            top: "28.4vw",
+          }}
+          align="left"
+        >
+          HOT : {optionhot}
+        </Typography>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "5.78vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             decreaseoptionhot();
             setcshowtype(showtype);
@@ -3010,6 +4410,13 @@ function Modalboxdesign() {
         </Button>
         <div></div>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "45.83vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             increaseoptioniced();
             setcshowtype(showtype);
@@ -3017,8 +4424,26 @@ function Modalboxdesign() {
         >
           +
         </Button>
-        <Typography align="left">ICED : {optioniced}</Typography>
+        <Typography
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "37.26vw",
+            top: "28.4vw",
+          }}
+          align="left"
+        >
+          ICED : {optioniced}
+        </Typography>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "29.94vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             decreaseoptioniced();
             setcshowtype(showtype);
@@ -3033,6 +4458,13 @@ function Modalboxdesign() {
     showoption.push(
       <div>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "45.83vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             increaseoptioniced();
             setcshowtype(showtype);
@@ -3040,8 +4472,26 @@ function Modalboxdesign() {
         >
           +
         </Button>
-        <Typography align="left">ICED : {optioniced}</Typography>
+        <Typography
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "37.26vw",
+            top: "28.4vw",
+          }}
+          align="left"
+        >
+          ICED : {optioniced}
+        </Typography>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "29.94vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             decreaseoptioniced();
             setcshowtype(showtype);
@@ -3056,6 +4506,13 @@ function Modalboxdesign() {
     showoption.push(
       <div>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "20.94vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             increaseoptionhot();
             setcshowtype(showtype);
@@ -3063,8 +4520,26 @@ function Modalboxdesign() {
         >
           +
         </Button>
-        <Typography align="left">HOT : {optionhot}</Typography>
+        <Typography
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "13.18vw",
+            top: "28.4vw",
+          }}
+          align="left"
+        >
+          HOT : {optionhot}
+        </Typography>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "5.78vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             decreaseoptionhot();
             setcshowtype(showtype);
@@ -3074,6 +4549,13 @@ function Modalboxdesign() {
         </Button>
         <div></div>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "45.83vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             increaseoptioniced();
             setcshowtype(showtype);
@@ -3081,8 +4563,26 @@ function Modalboxdesign() {
         >
           +
         </Button>
-        <Typography align="left">ICED : {optioniced}</Typography>
+        <Typography
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "37.26vw",
+            top: "28.4vw",
+          }}
+          align="left"
+        >
+          ICED : {optioniced}
+        </Typography>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "29.94vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             decreaseoptioniced();
             setcshowtype(showtype);
@@ -3097,6 +4597,13 @@ function Modalboxdesign() {
     showoption.push(
       <div>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "45.83vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             increaseoptioniced();
             setcshowtype(showtype);
@@ -3104,8 +4611,26 @@ function Modalboxdesign() {
         >
           +
         </Button>
-        <Typography align="left">ICED : {optioniced}</Typography>
+        <Typography
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "37.26vw",
+            top: "28.4vw",
+          }}
+          align="left"
+        >
+          ICED : {optioniced}
+        </Typography>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "29.94vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             decreaseoptioniced();
             setcshowtype(showtype);
@@ -3120,6 +4645,13 @@ function Modalboxdesign() {
     showoption.push(
       <div>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "45.83vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             increaseoptioniced();
             setcshowtype(showtype);
@@ -3127,8 +4659,26 @@ function Modalboxdesign() {
         >
           +
         </Button>
-        <Typography align="left">ICED : {optioniced}</Typography>
+        <Typography
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "37.26vw",
+            top: "28.4vw",
+          }}
+          align="left"
+        >
+          ICED : {optioniced}
+        </Typography>
         <Button
+          style={{
+            position: "absolute",
+            width: "3.66vw",
+            height: "3vw",
+            left: "29.94vw",
+            top: "28.4vw",
+          }}
           onClick={() => {
             decreaseoptioniced();
             setcshowtype(showtype);
@@ -3238,36 +4788,47 @@ function Modalboxdesign() {
   } //valueoflist[i]
   let i = 0;
   let j = 0;
-  let temp = [];
+
   return (
-    <div>
+    <div
+      style={{
+        width: "100vw",
+        height: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        alignContent: "center",
+        justifyContent: "center",
+        top: 0,
+      }}
+    >
       <Card
         raised
-        sx={{ margin: "0 auto", padding: "0px" }}
         style={{
-          width: "90vw",
-          height: "140vw",
-          borderRadius: "16px",
-          marginTop: "20px",
+          width: width,
+          height: height,
+          left: left,
+          top: top,
+          borderRadius: "0.73vw",
+          position: "absolute",
+          background: back,
         }}
       >
         <Button
-          onClick={() => {
-            Setismodalexittrue();
-            if (!ismodalexit) {
-              setoptioniced(0);
-              setoptionhot(0);
-              hide(setoptionitem());
-            }
+          style={{
+            position: "absolute",
+            width: "30vw",
+            height: "7.5vw",
+            right: "2.2vw",
+            bottom: "2.2vw",
           }}
-        >
-          닫기
-        </Button>
-        <Button
           onClick={() => {
-            //온클릭이벤트를 가감에써야함;
+            //온클릭이벤트를 가감에써야함; <<누가씀????
             console.log("담기선택됨");
-            if (showtype === 1) {
+            var temp2 = 0;
+            var a = coun;
+            var temp = [];
+            setcoun(a + optionitem);
+            if (showtype === 1 && optionitem != 0) {
               temp = receipt;
               temp = [
                 //receipt에 아이템추가로직(기본값으로)
@@ -3286,18 +4847,19 @@ function Modalboxdesign() {
               console.log("current id = ".concat("", temp.ritemid));
               console.log("current temp state is ");
               console.log(temp);
+
               setreceipt(temp);
-              var temp2 = 0; //가격정산로직(담을때)
-              for (i = 0; i < temp.length; i++) {
-                temp2 += temp[i].rmenuprice * temp[i].rmenuamount;
-                console.log("isNaN rmenuprice".concat("", isNaN(temp2)));
+              if (coun > 0 && sum == 0) {
+                console.log("error");
               }
               Setismodalexittrue();
               if (!ismodalexit) {
                 hide(setoptionitem());
                 console.log(temp2);
-                setsum(sum + temp2);
                 console.log("isNaN rmenuprice".concat("", isNaN(temp2)));
+                if (true) {
+                  setsum(Summer(temp));
+                }
               }
             } else {
               console.log("옵션있는쪽으로 이동됨");
@@ -3309,72 +4871,87 @@ function Modalboxdesign() {
               //담아질때, 일괄적으로 receipt에 추가됨. 따라서... 각 값을 불러와야하무
               //나는 iced, hot을 받아올수있고.. accordion은 +-에따라 그려지고 ,,
               //시작이다.
-              var temp2 = 0;
               console.log({ optioniced });
-
               temp = receipt;
-              for (i = 0; i < optionhot; i++) {
-                console.log("looping..");
-                console.log(i);
-                var optiondescription = genstring(valueoflist[i]);
-                var optionsum = sumoption(valueoflist[i]);
+              var a = coun;
+              setcoun(a + optionhot);
+              if (optionhot != 0) {
+                for (i = 0; i < optionhot; i++) {
+                  console.log("looping..");
+                  console.log(i);
+                  var optiondescription = genstring(valueoflist[i]);
+                  var optionsum = sumoption(valueoflist[i]);
+                  var temp2 = 0;
+                  temp = [
+                    //receipt에 아이템추가로직(기본값으로)
+                    ...temp,
+                    {
+                      rmenuname: menuname,
+                      rmenuprice: menuprice + optionsum,
+                      rmenutype: menutype,
+                      rmenuid: menuid,
+                      rmenuamount: 1,
+                      ritemid: counter++,
+                      ritemoptiondescription: optiondescription,
+                      rtemperature: "HOT",
+                    },
+                  ];
 
-                temp = [
-                  //receipt에 아이템추가로직(기본값으로)
-                  ...temp,
-                  {
-                    rmenuname: menuname,
-                    rmenuprice: menuprice + optionsum,
-                    rmenutype: menutype,
-                    rmenuid: menuid,
-                    rmenuamount: 1,
-                    ritemid: counter++,
-                    ritemoptiondescription: optiondescription,
-                    rtemperature: "HOT",
-                  },
-                ];
+                  console.log("current temp state is ");
+                  console.log(temp);
+                  temp2 += menuprice + optionsum;
 
-                console.log("current temp state is ");
-                console.log(temp);
-                temp2 += menuprice + optionsum;
-                setsum(sum + temp2);
-                console.log("isNaN rmenuprice".concat("", isNaN(temp2)));
-                setreceipt(temp);
+                  console.log("isNaN rmenuprice".concat("", isNaN(temp2)));
+                  setreceipt(temp);
+
+                  if (true) {
+                    setsum(Summer(temp));
+                  }
+                }
               }
+              var a = coun;
+              temp2 = 0;
+              setcoun(a + optioniced);
+              if (optioniced != 0) {
+                for (j = 0; j < optioniced; j++) {
+                  console.log("looping");
+                  console.log(j);
+                  var optiondescription = genstring(valueoflist[j + 25]);
+                  var optionsum = sumoption(valueoflist[j + 25]);
+                  var temp2 = [];
+                  temp = [
+                    //receipt에 아이템추가로직(기본값으로)
+                    ...temp,
+                    {
+                      rmenuname: menuname,
+                      rmenuprice: menuprice + optionsum,
+                      rmenutype: menutype,
+                      rmenuid: menuid,
+                      rmenuamount: 1,
+                      ritemid: counter++,
+                      ritemoptiondescription: optiondescription,
+                      rtemperature: "ICED",
+                    },
+                  ];
 
-              for (j = 0; j < optioniced; j++) {
-                console.log("looping");
-                console.log(j);
-                var optiondescription = genstring(valueoflist[j + 25]);
-                var optionsum = sumoption(valueoflist[j + 25]);
+                  console.log("current temp state is ");
+                  console.log(temp);
+                  console.log(temp.ritemoptiondescription);
+                  temp2 += menuprice + optionsum;
+                  console.log("isNaN rmenuprice".concat("", isNaN(temp2)));
 
-                temp = [
-                  //receipt에 아이템추가로직(기본값으로)
-                  ...temp,
-                  {
-                    rmenuname: menuname,
-                    rmenuprice: menuprice + optionsum,
-                    rmenutype: menutype,
-                    rmenuid: menuid,
-                    rmenuamount: 1,
-                    ritemid: counter++,
-                    ritemoptiondescription: optiondescription,
-                    rtemperature: "ICED",
-                  },
-                ];
-                console.log("current temp state is ");
-                console.log(temp);
-                console.log(temp.ritemoptiondescription);
-                temp2 += menuprice + optionsum;
-                console.log("isNaN rmenuprice".concat("", isNaN(temp2)));
-                setsum(sum + temp2);
-                setreceipt(temp);
+                  setreceipt(temp);
+                  if (true) {
+                    if (true) {
+                      setsum(Summer(temp));
+                    }
+                  }
+                }
+                console.log("loop ended.");
               }
-              console.log("loop ended.");
               Setismodalexittrue();
               if (!ismodalexit) {
                 hide(setoptionitem());
-                console.log(temp2);
 
                 setoptioniced(0);
                 setoptionhot(0);
@@ -3411,15 +4988,87 @@ function Modalboxdesign() {
             }
           }}
         >
-          담기
+          <img
+            src="images/comfirmbigpin.png"
+            style={{
+              position: "absolute",
+              width: "30vw",
+              height: "7.5vw",
+              right: "2.2vw",
+              bottom: "2.2vw",
+            }}
+          ></img>
         </Button>
-
-        <CardContent sx={{ padding: "0px" }}></CardContent>
-        <Typography align="center">{menuname}</Typography>
-        <Typography align="center">{menuprice}</Typography>
-
+        <Button
+          style={{
+            position: "absolute",
+            width: "30vw",
+            height: "7.5vw",
+            left: "2.2vw",
+            bottom: "2.2vw",
+          }}
+          onClick={() => {
+            Setismodalexittrue();
+            if (!ismodalexit) {
+              setoptioniced(0);
+              setoptionhot(0);
+              hide(setoptionitem());
+            }
+          }}
+        >
+          <img
+            src="images/cancelgreybig.png"
+            style={{
+              position: "absolute",
+              width: "30vw",
+              height: "7.5vw",
+              left: "2.2vw",
+              bottom: "2.2vw",
+            }}
+          ></img>
+        </Button>
+        <CardContent sx={{ padding: "0vw" }}></CardContent>
+        <Typography
+          align="center"
+          style={{
+            width: "70vw",
+            height: "3vh",
+            display: "flex",
+            flexDirection: "column",
+            alignContent: "center",
+            justifyContent: "center",
+            fontFamily: "Inter",
+            fontStyle: "normal",
+            fontWeight: "600",
+            fontSize: "1.5rem",
+            textAlign: "center",
+            color: "#000000",
+            margin: "0px 0px 0px 5vw",
+          }}
+        >
+          {menuname}
+        </Typography>
+        <Typography
+          align="center"
+          style={{
+            width: "70vw",
+            height: "3vh",
+            display: "flex",
+            flexDirection: "column",
+            alignContent: "center",
+            justifyContent: "center",
+            fontFamily: "Inter",
+            fontStyle: "normal",
+            fontWeight: "600",
+            fontSize: "1rem",
+            textAlign: "center",
+            margin: "0px 0px 0px 5vw",
+            color: "#F06489",
+          }}
+        >
+          {menuprice}원
+        </Typography>
         {showoption[0]}
-
         <CustomizedAccordions></CustomizedAccordions>
       </Card>
     </div>

@@ -193,6 +193,10 @@ export default function CustomizedAccordions() {
       var idxi = i;
       list.push(
         <Accordion
+          style={{
+            position: "relative",
+            width: "755px",
+          }}
           expanded={expanded === "panel".concat("", id)}
           onChange={handleChange("panel".concat("", id))}
         >
@@ -401,6 +405,10 @@ export default function CustomizedAccordions() {
       var idxi = j + 25;
       list.push(
         <Accordion
+          style={{
+            position: "relative",
+            width: "755px",
+          }}
           expanded={expanded === "panel".concat("", id)}
           onChange={handleChange("panel".concat("", id))}
         >
@@ -651,6 +659,10 @@ export default function CustomizedAccordions() {
       var idxi = i;
       list.push(
         <Accordion
+          style={{
+            position: "relative",
+            width: "755px",
+          }}
           expanded={expanded === "panel".concat("", id)}
           onChange={handleChange("panel".concat("", id))}
         >
@@ -798,6 +810,10 @@ export default function CustomizedAccordions() {
       var idxi = j + 25;
       list.push(
         <Accordion
+          style={{
+            position: "relative",
+            width: "755px",
+          }}
           expanded={expanded === "panel".concat("", id)}
           onChange={handleChange("panel".concat("", id))}
         >
@@ -989,6 +1005,10 @@ export default function CustomizedAccordions() {
       var idxi = j + 25;
       list.push(
         <Accordion
+          style={{
+            position: "relative",
+            width: "755px",
+          }}
           expanded={expanded === "panel".concat("", id)}
           onChange={handleChange("panel".concat("", id))}
         >
@@ -1109,6 +1129,10 @@ export default function CustomizedAccordions() {
       var idxi = i;
       list.push(
         <Accordion
+          style={{
+            position: "relative",
+            width: "755px",
+          }}
           expanded={expanded === "panel".concat("", id)}
           onChange={handleChange("panel".concat("", id))}
         >
@@ -1245,6 +1269,10 @@ export default function CustomizedAccordions() {
       var idxi = j + 25;
       list.push(
         <Accordion
+          style={{
+            position: "relative",
+            width: "755px",
+          }}
           expanded={expanded === "panel".concat("", id)}
           onChange={handleChange("panel".concat("", id))}
         >
@@ -1425,6 +1453,10 @@ export default function CustomizedAccordions() {
       var idxi = i;
       list.push(
         <Accordion
+          style={{
+            position: "relative",
+            width: "755px",
+          }}
           expanded={expanded === "panel".concat("", id)}
           onChange={handleChange("panel".concat("", id))}
         >
@@ -1597,6 +1629,10 @@ export default function CustomizedAccordions() {
       var idxi = j + 25;
       list.push(
         <Accordion
+          style={{
+            position: "relative",
+            width: "755px",
+          }}
           expanded={expanded === "panel".concat("", id)}
           onChange={handleChange("panel".concat("", id))}
         >
@@ -1813,6 +1849,10 @@ export default function CustomizedAccordions() {
       var idxi = j + 25;
       list.push(
         <Accordion
+          style={{
+            position: "relative",
+            width: "755px",
+          }}
           expanded={expanded === "panel".concat("", id)}
           onChange={handleChange("panel".concat("", id))}
         >
@@ -1969,6 +2009,10 @@ export default function CustomizedAccordions() {
       var idxi = j + 25;
       list.push(
         <Accordion
+          style={{
+            position: "relative",
+            width: "755px",
+          }}
           expanded={expanded === "panel".concat("", id)}
           onChange={handleChange("panel".concat("", id))}
         >
@@ -2184,6 +2228,10 @@ export default function CustomizedAccordions() {
       var idxi = j + 25;
       list.push(
         <Accordion
+          style={{
+            position: "relative",
+            width: "755px",
+          }}
           expanded={expanded === "panel".concat("", id)}
           onChange={handleChange("panel".concat("", id))}
         >
@@ -2294,6 +2342,10 @@ export default function CustomizedAccordions() {
       var idxi = i;
       list.push(
         <Accordion
+          style={{
+            position: "relative",
+            width: "755px",
+          }}
           expanded={expanded === "panel".concat("", id)}
           onChange={handleChange("panel".concat("", id))}
         >
@@ -2445,6 +2497,10 @@ export default function CustomizedAccordions() {
       var idxi = j + 25;
       list.push(
         <Accordion
+          style={{
+            position: "relative",
+            width: "755px",
+          }}
           expanded={expanded === "panel".concat("", id)}
           onChange={handleChange("panel".concat("", id))}
         >
@@ -2640,6 +2696,10 @@ export default function CustomizedAccordions() {
       var idxi = i;
       list.push(
         <Accordion
+          style={{
+            position: "relative",
+            width: "755px",
+          }}
           expanded={expanded === "panel".concat("", id)}
           onChange={handleChange("panel".concat("", id))}
         >
@@ -2811,6 +2871,10 @@ export default function CustomizedAccordions() {
       var idxi = j + 25;
       list.push(
         <Accordion
+          style={{
+            position: "relative",
+            width: "755px",
+          }}
           expanded={expanded === "panel".concat("", id)}
           onChange={handleChange("panel".concat("", id))}
         >
@@ -3026,6 +3090,10 @@ export default function CustomizedAccordions() {
       var idxi = i;
       list.push(
         <Accordion
+          style={{
+            position: "relative",
+            width: "755px",
+          }}
           expanded={expanded === "panel".concat("", id)}
           onChange={handleChange("panel".concat("", id))}
         >
@@ -3174,6 +3242,10 @@ export default function CustomizedAccordions() {
       var idxi = j + 25;
       list.push(
         <Accordion
+          style={{
+            position: "relative",
+            width: "755px",
+          }}
           expanded={expanded === "panel".concat("", id)}
           onChange={handleChange("panel".concat("", id))}
         >
@@ -3365,6 +3437,10 @@ export default function CustomizedAccordions() {
       var idxi = j + 25;
       list.push(
         <Accordion
+          style={{
+            position: "relative",
+            width: "755px",
+          }}
           expanded={expanded === "panel".concat("", id)}
           onChange={handleChange("panel".concat("", id))}
         >
@@ -3521,6 +3597,10 @@ export default function CustomizedAccordions() {
       var idxi = j + 25;
       list.push(
         <Accordion
+          style={{
+            position: "relative",
+            width: "755px",
+          }}
           expanded={expanded === "panel".concat("", id)}
           onChange={handleChange("panel".concat("", id))}
         >
@@ -3630,6 +3710,10 @@ export default function CustomizedAccordions() {
       var idxi = j + 25;
       list.push(
         <Accordion
+          style={{
+            position: "relative",
+            width: "755px",
+          }}
           expanded={expanded === "panel".concat("", id)}
           onChange={handleChange("panel".concat("", id))}
         >
@@ -3788,6 +3872,10 @@ export default function CustomizedAccordions() {
       var idxi = i;
       list.push(
         <Accordion
+          style={{
+            position: "relative",
+            width: "755px",
+          }}
           expanded={expanded === "panel".concat("", id)}
           onChange={handleChange("panel".concat("", id))}
         >
@@ -3834,6 +3922,10 @@ export default function CustomizedAccordions() {
       var idxi = j + 25;
       list.push(
         <Accordion
+          style={{
+            position: "relative",
+            width: "755px",
+          }}
           expanded={expanded === "panel".concat("", id)}
           onChange={handleChange("panel".concat("", id))}
         >
@@ -3883,6 +3975,10 @@ export default function CustomizedAccordions() {
       var idxi = i;
       list.push(
         <Accordion
+          style={{
+            position: "relative",
+            width: "755px",
+          }}
           expanded={expanded === "panel".concat("", id)}
           onChange={handleChange("panel".concat("", id))}
         >
@@ -4026,6 +4122,10 @@ export default function CustomizedAccordions() {
       var idxi = j + 25;
       list.push(
         <Accordion
+          style={{
+            position: "relative",
+            width: "755px",
+          }}
           expanded={expanded === "panel".concat("", id)}
           onChange={handleChange("panel".concat("", id))}
         >
@@ -4172,6 +4272,10 @@ export default function CustomizedAccordions() {
       var idxi = j + 25;
       list.push(
         <Accordion
+          style={{
+            position: "relative",
+            width: "755px",
+          }}
           expanded={expanded === "panel".concat("", id)}
           onChange={handleChange("panel".concat("", id))}
         >
@@ -4331,6 +4435,10 @@ export default function CustomizedAccordions() {
       var idxi = i;
       list.push(
         <Accordion
+          style={{
+            position: "relative",
+            width: "755px",
+          }}
           expanded={expanded === "panel".concat("", id)}
           onChange={handleChange("panel".concat("", id))}
         >
@@ -4446,6 +4554,10 @@ export default function CustomizedAccordions() {
       var idxi = j + 25;
       list.push(
         <Accordion
+          style={{
+            position: "relative",
+            width: "755px",
+          }}
           expanded={expanded === "panel".concat("", id)}
           onChange={handleChange("panel".concat("", id))}
         >
@@ -4605,6 +4717,10 @@ export default function CustomizedAccordions() {
       var idxi = i;
       list.push(
         <Accordion
+          style={{
+            position: "relative",
+            width: "755px",
+          }}
           expanded={expanded === "panel".concat("", id)}
           onChange={handleChange("panel".concat("", id))}
         >
@@ -4772,6 +4888,10 @@ export default function CustomizedAccordions() {
       var idxi = j + 25;
       list.push(
         <Accordion
+          style={{
+            position: "relative",
+            width: "755px",
+          }}
           expanded={expanded === "panel".concat("", id)}
           onChange={handleChange("panel".concat("", id))}
         >
@@ -4982,6 +5102,10 @@ export default function CustomizedAccordions() {
       var idxi = i;
       list.push(
         <Accordion
+          style={{
+            position: "relative",
+            width: "755px",
+          }}
           expanded={expanded === "panel".concat("", id)}
           onChange={handleChange("panel".concat("", id))}
         >
@@ -5090,6 +5214,10 @@ export default function CustomizedAccordions() {
       var idxi = j + 25;
       list.push(
         <Accordion
+          style={{
+            position: "relative",
+            width: "755px",
+          }}
           expanded={expanded === "panel".concat("", id)}
           onChange={handleChange("panel".concat("", id))}
         >
@@ -5242,6 +5370,10 @@ export default function CustomizedAccordions() {
       var idxi = j + 25;
       list.push(
         <Accordion
+          style={{
+            position: "relative",
+            width: "755px",
+          }}
           expanded={expanded === "panel".concat("", id)}
           onChange={handleChange("panel".concat("", id))}
         >
@@ -5298,6 +5430,10 @@ export default function CustomizedAccordions() {
       var idxi = i;
       list.push(
         <Accordion
+          style={{
+            position: "relative",
+            width: "755px",
+          }}
           expanded={expanded === "panel".concat("", id)}
           onChange={handleChange("panel".concat("", id))}
         >
@@ -5345,6 +5481,10 @@ export default function CustomizedAccordions() {
       var idxi = j + 25;
       list.push(
         <Accordion
+          style={{
+            position: "relative",
+            width: "755px",
+          }}
           expanded={expanded === "panel".concat("", id)}
           onChange={handleChange("panel".concat("", id))}
         >
@@ -5395,6 +5535,10 @@ export default function CustomizedAccordions() {
       var idxi = j + 25;
       list.push(
         <Accordion
+          style={{
+            position: "relative",
+            width: "755px",
+          }}
           expanded={expanded === "panel".concat("", id)}
           onChange={handleChange("panel".concat("", id))}
         >
@@ -5547,6 +5691,10 @@ export default function CustomizedAccordions() {
       var idxi = i;
       list.push(
         <Accordion
+          style={{
+            position: "relative",
+            width: "755px",
+          }}
           expanded={expanded === "panel".concat("", id)}
           onChange={handleChange("panel".concat("", id))}
         >
@@ -5717,6 +5865,10 @@ export default function CustomizedAccordions() {
       var idxi = j + 25;
       list.push(
         <Accordion
+          style={{
+            position: "relative",
+            width: "755px",
+          }}
           expanded={expanded === "panel".concat("", id)}
           onChange={handleChange("panel".concat("", id))}
         >
@@ -5893,6 +6045,10 @@ export default function CustomizedAccordions() {
       var idxi = j + 25;
       list.push(
         <Accordion
+          style={{
+            position: "relative",
+            width: "755px",
+          }}
           expanded={expanded === "panel".concat("", id)}
           onChange={handleChange("panel".concat("", id))}
         >
@@ -5976,6 +6132,10 @@ export default function CustomizedAccordions() {
       var idxi = j + 25;
       list.push(
         <Accordion
+          style={{
+            position: "relative",
+            width: "755px",
+          }}
           expanded={expanded === "panel".concat("", id)}
           onChange={handleChange("panel".concat("", id))}
         >
@@ -6061,6 +6221,10 @@ export default function CustomizedAccordions() {
       var idxi = j + 25;
       list.push(
         <Accordion
+          style={{
+            position: "relative",
+            width: "755px",
+          }}
           expanded={expanded === "panel".concat("", id)}
           onChange={handleChange("panel".concat("", id))}
         >
@@ -6172,6 +6336,10 @@ export default function CustomizedAccordions() {
       var idxi = i;
       list.push(
         <Accordion
+          style={{
+            position: "relative",
+            width: "755px",
+          }}
           expanded={expanded === "panel".concat("", id)}
           onChange={handleChange("panel".concat("", id))}
         >
@@ -6225,6 +6393,10 @@ export default function CustomizedAccordions() {
       var idxi = j + 25;
       list.push(
         <Accordion
+          style={{
+            position: "relative",
+            width: "755px",
+          }}
           expanded={expanded === "panel".concat("", id)}
           onChange={handleChange("panel".concat("", id))}
         >
@@ -6281,6 +6453,10 @@ export default function CustomizedAccordions() {
       var idxi = i;
       list.push(
         <Accordion
+          style={{
+            position: "relative",
+            width: "755px",
+          }}
           expanded={expanded === "panel".concat("", id)}
           onChange={handleChange("panel".concat("", id))}
         >
@@ -6300,6 +6476,10 @@ export default function CustomizedAccordions() {
       var idxi = j + 25;
       list.push(
         <Accordion
+          style={{
+            position: "relative",
+            width: "755px",
+          }}
           expanded={expanded === "panel".concat("", id)}
           onChange={handleChange("panel".concat("", id))}
         >
@@ -6363,6 +6543,10 @@ export default function CustomizedAccordions() {
       var idxi = j + 25;
       list.push(
         <Accordion
+          style={{
+            position: "relative",
+            width: "755px",
+          }}
           expanded={expanded === "panel".concat("", id)}
           onChange={handleChange("panel".concat("", id))}
         >
@@ -6460,6 +6644,10 @@ export default function CustomizedAccordions() {
       var idxi = i;
       list.push(
         <Accordion
+          style={{
+            position: "relative",
+            width: "755px",
+          }}
           expanded={expanded === "panel".concat("", id)}
           onChange={handleChange("panel".concat("", id))}
         >
@@ -6513,6 +6701,10 @@ export default function CustomizedAccordions() {
       var idxi = j + 25;
       list.push(
         <Accordion
+          style={{
+            position: "relative",
+            width: "755px",
+          }}
           expanded={expanded === "panel".concat("", id)}
           onChange={handleChange("panel".concat("", id))}
         >
@@ -6610,6 +6802,10 @@ export default function CustomizedAccordions() {
       var idxi = j + 25;
       list.push(
         <Accordion
+          style={{
+            position: "relative",
+            width: "755px",
+          }}
           expanded={expanded === "panel".concat("", id)}
           onChange={handleChange("panel".concat("", id))}
         >
@@ -6735,6 +6931,10 @@ export default function CustomizedAccordions() {
       var idxi = j + 25;
       list.push(
         <Accordion
+          style={{
+            position: "relative",
+            width: "755px",
+          }}
           expanded={expanded === "panel".concat("", id)}
           onChange={handleChange("panel".concat("", id))}
         >
@@ -6826,5 +7026,17 @@ export default function CustomizedAccordions() {
   } else {
   }
 
-  return <div>{list}</div>;
+  return (
+    <div
+      style={{
+        overflow: "scroll",
+        position: "absolute",
+        bottom: "0vh",
+        height: "20vh",
+        margin: "0px 0px 10vh 0px",
+      }}
+    >
+      {list}
+    </div>
+  );
 }

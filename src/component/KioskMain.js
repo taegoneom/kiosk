@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { AppViewStatus } from "./ViewStatus";
 import {
   Grid,
@@ -6,6 +6,8 @@ import {
   CardMedia,
   CardContent,
   Typography,
+  Container,
+  Box,
 } from "@material-ui/core";
 import zustand from "zustand";
 function KioskMain() {
@@ -24,7 +26,7 @@ function KioskMain() {
   const { SetForHere, SetToGo } = AppViewStatus();
 
   function togo() {
-    //2;
+    //2
 
     SetToGo();
   }
@@ -32,63 +34,41 @@ function KioskMain() {
     //3
     SetForHere();
   }
-
+  useEffect(() => {
+    document.body.style = `overflow: hidden`;
+    return () => (document.body.style = `overflow: auto`);
+  }, []);
   return (
-    <div>
-      <Grid container justifycontent={"space-around"} direction={"row"}>
-        <Grid item marginleft={"4em"}>
-          <Card
-            raised
-            sx={{ margin: "0 auto", padding: "0vw" }}
-            style={{
-              width: "40vw",
-              height: "60vw",
-              borderRadius: "16px",
-              marginTop: "20px",
-            }}
-          >
-            <CardMedia
-              component="img"
-              image="images/app_benefit_img04.png"
-              onClick={togo}
-              sx={{ padding: "0px", objectFit: "contain" }}
-            />
-            <CardContent sx={{ padding: "0px" }}>
-              <Typography align="center">테이크아웃</Typography>
-              <Typography align="center">1회용 컵</Typography>
-              <Typography align="center">
-                자원 재활용법에따라 매장 내 일회용 컵
-              </Typography>
-              <Typography align="center">
-                (플라스틱 컵)사용이 금지되어 있습니다.
-              </Typography>
-            </CardContent>
-          </Card>
-        </Grid>
-        <Grid item xs>
-          <Card
-            raised
-            sx={{ margin: "0 auto", padding: "0vw" }}
-            style={{
-              width: "40vw",
-              height: "60vw",
-              borderRadius: "16px",
-              marginTop: "20px",
-            }}
-          >
-            <CardMedia
-              component="img"
-              image="images/app_benefit_img01.png"
-              onClick={forhere}
-              sx={{ padding: "0px", objectFit: "contain" }}
-            />
-            <CardContent sx={{ padding: "0px" }}>
-              <Typography align="center">매장</Typography>
-              <Typography align="center">종이컵</Typography>
-            </CardContent>
-          </Card>
-        </Grid>
-      </Grid>
+    <div
+      style={{
+        display: "absolute",
+        textAlign: "center",
+        float: "left",
+        top: "15vw",
+      }}
+    >
+      <img
+        display="absolute"
+        src="images/logoimageraw1.png"
+        onClick={togo}
+        style={{
+          display: "absolute",
+          width: "35vw",
+          height: "35vw",
+          margin: "5vw 10vw 0vw 10vw",
+        }}
+      ></img>
+      <img
+        src="images/logoimageraw2.png"
+        onClick={forhere}
+        style={{
+          display: "absolute",
+          width: "35vw",
+          height: "35vw",
+          display: "absolute",
+          margin: "10vw 0vw 0vw 0vw",
+        }}
+      ></img>
     </div>
   );
 }

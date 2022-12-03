@@ -1,11 +1,13 @@
 import React, { useEffect } from "react";
-import Header from "./component/Header";
-import Content from "./component/Content";
+
 import { AppViewStatus } from "./component/ViewStatus";
 import MenuSelecterMain from "./component/MenuSelecterMain";
 import Cart from "./component/Cart";
 import { CustomOptions } from "./component/Orderdata";
-
+import Modalonemenu from "./component/Modalonemenu";
+import { show } from "react-functional-modal";
+import KioskMain from "./component/KioskMain";
+import KioskHeader from "./component/KioskHeader";
 var flag = true;
 
 function App() {
@@ -22,22 +24,10 @@ function App() {
     setScreenSize();
   });
 
-  useEffect(() => {
-    document.body.style.cssText = `
-        position: fixed; 
-        top: -${window.scrollY}px;
-        overflow-y: scroll;
-        width: 100%;`;
-    return () => {
-      const scrollY = document.body.style.top;
-      document.body.style.cssText = "";
-      window.scrollTo(0, parseInt(scrollY || "0", 10) * -1);
-    };
-  }, []);
+  ///////////////////////////////////////////
   if (flag) {
     var vl = [];
     for (var k = 0; k < 51; k++) {
-      //천잔넘으면 좃된다.
       vl.push({
         id: k,
         ice: "0", //기본 0 얼음많이1 얼음적게2 얼음없이3
@@ -57,34 +47,6 @@ function App() {
         changelatteorsoyfromset: "0", //안함 0 라떼로 변경1 2두유로변경(세트만800)
       });
     }
-    /////////////////////////////////////
-    document.documentElement.addEventListener(
-      "touchstart",
-      function (event) {
-        //확대방지코드
-        if (event.touches.length > 1) {
-          event.preventDefault();
-        }
-      },
-      false
-    );
-
-    var lastTouchEnd = 0;
-
-    document.documentElement.addEventListener(
-      "touchend",
-      function (event) {
-        //확대방지코드
-        var now = new Date().getTime();
-        if (now - lastTouchEnd <= 300) {
-          event.preventDefault();
-        }
-        lastTouchEnd = now;
-      },
-      false
-    );
-
-    ///////////////////////////////////////////
 
     setvalueoflist(vl);
     var vl = [];
@@ -93,18 +55,25 @@ function App() {
     console.log(flag);
   }
   return (
-    <div>
+    <div
+      style={{
+        display: "absolute",
+        direction: "column",
+      }}
+    >
       {value === 1 ? (
-        <div
-          className="container"
-          style={{ display: "flex", flexDirection: "column" }}
-        >
-          {console.log(valueoflist)}
-          <Header className="item" style={{}} />
-          <Content
-            className="item"
-            style={{ flexDirection: "row", justifyContent: "center" }}
-          />
+        <div style={{}}>
+          <div
+            style={{
+              display: "absolute",
+              direction: "row",
+            }}
+          >
+            {KioskHeader()}
+          </div>
+          <body>
+            <KioskMain></KioskMain>
+          </body>
         </div>
       ) : (
         <p></p>
@@ -114,23 +83,27 @@ function App() {
         <div
           className="container"
           style={{
-            display: "flex",
+            display: "absolute",
             justifyContent: "center",
             alignItems: "center",
-            flexDirection: "column",
+            absoluteDirection: "column",
           }}
         >
-          <Header
-            className="item"
-            style={{ flexDirection: "row", justifyContent: "center" }}
-          />
+          <div
+            style={{
+              display: "absolute",
+              direction: "column",
+            }}
+          >
+            {KioskHeader()}
+          </div>
           <MenuSelecterMain
             className="item"
-            style={{ flexDirection: "row", justifyContent: "center" }}
+            style={{ absoluteDirection: "column", justifyContent: "center" }}
           />
           <Cart
             className="item"
-            style={{ flexDirection: "row", justifyContent: "center" }}
+            style={{ absoluteDirection: "column", justifyContent: "center" }}
           />
         </div>
       ) : (
@@ -140,24 +113,23 @@ function App() {
         <div
           className="container"
           style={{
-            display: "flex",
+            display: "absolute",
             justifyContent: "center",
             alignItems: "center",
-            flexDirection: "column",
+            absoluteDirection: "column",
           }}
         >
-          <Header
-            className="item"
-            style={{ flexDirection: "row", justifyContent: "center" }}
-          />
+          <div style={{ display: "absolute" }}>{KioskHeader()}</div>
           <MenuSelecterMain
             className="item"
-            style={{ flexDirection: "row", justifyContent: "center" }}
+            style={{ absoluteDirection: "column", justifyContent: "center" }}
           />
-          <Cart
-            className="item"
-            style={{ flexDirection: "row", justifyContent: "center" }}
-          />
+          <body>
+            <Cart
+              className="item"
+              style={{ absoluteDirection: "column", justifyContent: "center" }}
+            />
+          </body>
         </div>
       ) : (
         <p></p>
